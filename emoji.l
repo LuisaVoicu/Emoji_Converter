@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+char *to_lower(char *str);
 %}
 
 
@@ -44,12 +46,13 @@ digit [0-9]
 
 %%
 
-[\t\n\r ]+                      ; 
+[\t\r ]+                      ; 
 
 "bird"          { yylval.num = 1; yylval.noun_flag = PLURAL_FLAG; flags |= HAS_SUBJECT_FLAG; return BIRD; }
 "dog"           { yylval.num = 1; yylval.noun_flag = PLURAL_FLAG; flags |= HAS_SUBJECT_FLAG; return DOG; }
 "birthday"          { yylval.num = 1; yylval.noun_flag = PLURAL_FLAG; flags |= HAS_SUBJECT_FLAG; return BIRTHDAY; }
 "luck"          { yylval.num = 1; yylval.noun_flag = PLURAL_FLAG; flags |= HAS_SUBJECT_FLAG; return LUCK; }
+"christmas"          { yylval.num = 1; yylval.noun_flag = PLURAL_FLAG; flags |= HAS_SUBJECT_FLAG; return CHRISTMAS; }
 
 "birds"          { yylval.num = 2; yylval.noun_flag = PLURAL_FLAG; flags |= HAS_SUBJECT_FLAG; return BIRD; }
 "dogs"           { yylval.num = 2; yylval.noun_flag = PLURAL_FLAG; flags |= HAS_SUBJECT_FLAG; return DOG; }
@@ -72,6 +75,9 @@ digit [0-9]
                     if (token) {
                         return token;
                     }
+                    else {
+                         yylval.str = strdup(to_lower(yytext)); return UNKNOWN_WORD;
+                    }
                 }
 {digit}+        { yylval.num = atoi(yytext); return NUMBER; }
 
@@ -83,4 +89,11 @@ digit [0-9]
 
 int yywrap(void) {
     return 1;
+}
+char *to_lower(char *str) {
+    char *lower_str = strdup(str);
+    for (int i = 0; lower_str[i]; i++) {
+        lower_str[i] = tolower(lower_str[i]);
+    }
+    return lower_str;
 }

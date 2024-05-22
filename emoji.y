@@ -5,11 +5,13 @@
 
 void yyerror(const char *s);
 void print_emoji(const char *emoji, int count);
-const char* get_emoji(char *expression); 
-int check_expression(char *expression);
-
+void save_buffer(char* word);
+void replace_expressions_in_buffer();
 static char expression_buffer[100];
+static char buffer[10000];
 static int n = 0;
+
+
 %}
 
 %union {
@@ -22,20 +24,23 @@ static int n = 0;
     int adverb_flag;
 }
 
+
+%token <str> UNKNOWN_WORD
 %token <num> NUMBER
-%token <plural_flag> PLURAL_FLAG
-%token <noun_flag> BIRD DOG CAT TREE HOUSE CAR BOOK COMPUTER PHONE FOOD WATER SUN MOON STAR FLOWER BIRTHDAY LUCK
+%token <noun_flag> BIRD DOG CAT TREE HOUSE CAR BOOK COMPUTER PHONE FOOD WATER SUN MOON STAR FLOWER BIRTHDAY LUCK CHRISTMAS
 %token <adjective_flag> LITTLE BIG FEW BEAUTIFUL UGLY NICE HAPPY SAD ANGRY FAST SLOW STRONG WEAK SMART DUMB OLD YOUNG HOT COLD GOOD
 %token <verb_flag> WALK TALK DRINK EAT SLEEP RUN READ WRITE PLAY SING
 %token <adverb_flag> DAILY QUICKLY SLOWLY HAPPILY SADLY LOUDLY QUIETLY ALWAYS NEVER
 %token DASH EXCLAMATION
-%type <str> word
 %type <str> noun
 %type <str> adjective
-%type <str> expression
+%type <str> adjective_aux
 %type <str> verb
+%type <str> verb_aux
 %type <str> adverb
+%type <str> adverb_aux
 %type <num> number
+%type <str> unknown_word
 
 %%
 
@@ -44,21 +49,21 @@ poem:
     ;
 
 lines:
-    line '\n' lines
+    line lines
     | line
     ;
 
 line:
-    sentences
+    sentences {
+        printf("\n--------this is the end of line, catched: %s \n", buffer);
+        replace_expressions_in_buffer();
+        printf("\n--------this is the end of line, catched with expressions: %s \n", buffer);
+
+    }
     ;
 
 
-word:
-    adjective
-    | noun
-    | adverb
-    | verb
-    ;
+
 sentences:
     sentence sentences
     | sentence
@@ -66,53 +71,31 @@ sentences:
 
 
 
+
+
 sentence:
-    expression 
-    ;
-
-phrase:
-    counted_nouns adjective verb adverb
-    | adjective counted_nouns verb adverb {printf("here i have adjective noun!\n");}
-    | adjective counted_nouns adverb verb 
-    | counted_nouns adjective verb
-    | adjective counted_nouns verb
-    | counted_nouns adverb verb
-    | counted_nouns verb adverb
-    | counted_nouns verb
-    | adjective counted_nouns  {printf("I AM HERE %s\n", $1);}
-    | verb
+    counted_nouns adjective_aux verb_aux adverb_aux
+    | adjective_aux counted_nouns verb_aux adverb_aux {printf("here i have adjective noun!\n");}
+    | adjective_aux counted_nouns adverb_aux verb_aux 
+    | counted_nouns adjective_aux verb_aux
+    | adjective_aux counted_nouns verb_aux
+    | counted_nouns adverb_aux verb_aux
+    | counted_nouns verb_aux adverb_aux
+    | counted_nouns verb_aux
+    | adjective_aux counted_nouns  {printf("I AM HERE %s\n", $1);}
+    | verb_aux
     | counted_nouns 
-    ;
-
-expression:
-    word {
-        strcpy(expression_buffer, $1);
-
-    }   
-    | expression word {
-
-        strcat(expression_buffer, " ");
-        strcat(expression_buffer, $2);
-
-        char expression_aux[100];
-        strcpy(expression_aux, expression_buffer);
-
-        int good_expression = check_expression(expression_aux);
-        if (good_expression == 1) {
-            
-            print_emoji(get_emoji(expression_buffer),1);
-        }
-        expression_buffer[0] = '\0';
-    }
+    | unknown_word
     ;
 
 
+
+// printare / punere in buffer a fiecarei parti de vorbire 
 counted_noun:
     noun {print_emoji($1, 1);} //todo : doesn't work...
     | number noun { print_emoji($2, $1);}
     | noun number { print_emoji($1, $2);}
     | number {printf("%d ", $1); }
-
     ;
 
 counted_nouns:
@@ -120,12 +103,26 @@ counted_nouns:
     | counted_noun
     ;
 
+adjective_aux:
+    adjective {printf("%s ",$1); save_buffer($1);}
+    ;
+
+verb_aux:
+    verb {printf("%s ",$1); save_buffer($1);}
+    ;
+
+adverb_aux:
+    adverb {printf("%s ",$1); save_buffer($1);}
+    ;
+
+unknown_word :
+    UNKNOWN_WORD    {$$ = $1; printf("####### %s\n", $$); save_buffer($$);}
 
 number :
     NUMBER       { $$ = $1; }
 
 noun:
-    BIRD         { $$ = "🐦"; }
+    BIRD         { $$ = "🐦";}
     | DOG        { $$ = "🐶"; }
     | CAT        { $$ = "🐱"; }
     | TREE       { $$ = "🌳"; }
@@ -140,7 +137,9 @@ noun:
     | MOON       { $$ = "🌜"; }
     | STAR       { $$ = "⭐"; }
     | FLOWER     { $$ = "🌸"; }
-    | BIRTHDAY     { $$ = "🎂"; }
+    | BIRTHDAY   { $$ = "🎂"; }
+    | LUCK       { $$ = "🍀";}
+    | CHRISTMAS  { $$ = "🎅🏻";}
     ;
 
 adjective:
@@ -163,31 +162,32 @@ adjective:
     | YOUNG      { $$ = "👶"; }
     | HOT        { $$ = "🔥"; }
     | COLD       { $$ = "❄️"; }
+    | GOOD       { $$ = "👍"; }
     ;
 
 verb:
-    WALK      { printf("🚶 "); }
-    | TALK      { printf("🗣️ "); }
-    | DRINK     { printf("🥤 "); }
-    | EAT       { printf("🍽️ "); }
-    | SLEEP     { printf("😴 "); }
-    | RUN       { printf("🏃 "); }
-    | READ      { printf("📖 "); }
-    | WRITE     { printf("✍️ "); }
-    | PLAY      { printf("🎮 "); }
-    | SING      { printf("🎤 "); }
+    WALK      { $$ = "🚶"; }
+    | TALK      { $$ = "🗣️"; }
+    | DRINK     { $$ = "🥤"; }
+    | EAT       { $$ = "🍽️"; }
+    | SLEEP     { $$ = "😴"; }
+    | RUN       { $$ = "🏃"; }
+    | READ      { $$ = "📖"; }
+    | WRITE     { $$ = "✍️"; }
+    | PLAY      { $$ = "🎮"; }
+    | SING      { $$ = "🎤"; }
     ;
 
 adverb:
-    DAILY      { printf("📅 "); }
-    | QUICKLY   { printf("🏃‍♂️ "); }
-    | SLOWLY    { printf("🐢 "); }
-    | HAPPILY   { printf("😊 "); }
-    | SADLY     { printf("😢 "); }
-    | LOUDLY    { printf("🔊 "); }
-    | QUIETLY   { printf("🤫 "); }
-    | ALWAYS    { printf("♾️ "); }
-    | NEVER     { printf("🚫 "); }
+    DAILY      { $$ = "📅"; }
+    | QUICKLY   { $$ = "🏃‍♂️"; }
+    | SLOWLY    { $$ = "🐢"; }
+    | HAPPILY   { $$ = "😊"; }
+    | SADLY     { $$ = "😢"; }
+    | LOUDLY    { $$ = "🔊"; }
+    | QUIETLY   { $$ = "🤫"; }
+    | ALWAYS    { $$ = "♾️"; }
+    | NEVER     { $$ = "🚫"; }
     ;
 
 %%
@@ -195,6 +195,8 @@ adverb:
 #include "lex.yy.c"
 
 int main() {
+    printf("before or after????\n");
+    strcpy(buffer, "");
     return yyparse();
 }
 
@@ -206,6 +208,7 @@ void print_emoji(const char *emoji, int count) {
     int repeat = count;
     for (int i = 1; i <= repeat; i++) {
         printf("%s ", emoji);
+        save_buffer(emoji);
     }
 }
 void process_expression(char **words, int num_words) {
@@ -216,78 +219,56 @@ void process_expression(char **words, int num_words) {
     printf("\n");
 }
 
-int check_expression(char *expression) {
+void save_buffer(char* word){
+  strcat(buffer, word);
+  strcat(buffer, " ");
+}
 
-                        printf("fjnction buffer %s\n", expression);
+void replace_expressions_in_buffer() {
+    char *new_buffer = malloc(strlen(buffer) + 1); 
+    if (new_buffer == NULL) {
+        fprintf(stderr, "Memory allocation failed\n");
+        return;
+    }
+    new_buffer[0] = '\0'; 
 
-                        char *word = strtok(expression, " "); 
-    while (word) {
-        printf("!!!-> %s comp: %d\n",word, (strcmp(word, "😃")));
-                            printf("next!!!-> %s comp: %d\n",word, (strcmp(word, "🎂") ));
-                    printf("next!!!-> %s comp: %d\n",word, (strcmp(word, "😃") ));
-        // Check each word for expression match (using string comparisons)
-        if (strcmp(word, "😃") == 0) {
-            word = strtok(NULL, " "); // Get next word
-                    printf("found happy next cake!!!-> %s comp: %d\n",word, (strcmp(word, "🎂") ));
-                    printf("found happy next cake-> %s comp: %d\n",word, (strcmp(word, "😃") ));
-
-            if (word && strcmp(word, "🎂") == 0) {
-                                    printf("found cake!!!-> %s comp: %d\n",word, (strcmp(word, "🎂") ));
-
-                return 1; // Match found
+    char *expression = strtok(buffer, " "); 
+    while (expression != NULL) {
+        if (strcmp(expression, "😃") == 0) {
+            char *next_token = strtok(NULL, " "); 
+            if (next_token != NULL && strcmp(next_token, "🎂") == 0) {
+                strcat(new_buffer, "🥳 "); 
+                expression = strtok(NULL, " "); 
+                continue; 
             }
-        } else if (strcmp(word, "merry") == 1) {
-            word = strtok(NULL, " ");
-            if (word && strcmp(word, "christmas") == 1) {
-                return 1;
+        } else if (strcmp(expression, "merry") == 0) {
+            char *next_token = strtok(NULL, " "); 
+            if (next_token != NULL && strcmp(next_token, "🎅🏻") == 0) {
+                strcat(new_buffer, "🎄 "); 
+                expression = strtok(NULL, " "); 
+                continue; 
             }
-        } else if (strcmp(word, "welcome") == 1) {
-            word = strtok(NULL, " ");
-            if (word && strcmp(word, "home") == 1) {
-                return 1;
+        } else if (strcmp(expression, "welcome") == 0) {
+            char *next_token = strtok(NULL, " "); 
+            if (next_token != NULL && strcmp(next_token, "home") == 0) {
+                strcat(new_buffer, "🏡 "); 
+                expression = strtok(NULL, " "); 
+                continue; 
             }
-        } else if (strcmp(word, "good") == 1) {
-            word = strtok(NULL, " ");
-            if (word && strcmp(word, "luck") == 1) {
-                return 1;
+        } else if (strcmp(expression, "👍") == 0) {
+            char *next_token = strtok(NULL, " "); 
+            if (next_token != NULL && strcmp(next_token, "🍀") == 0) {
+                strcat(new_buffer, "🤞 "); 
+                expression = strtok(NULL, " ");
+                continue; 
             }
         }
-        // Add more checks for other expressions
 
-        word = strtok(NULL, " "); // Get next word
+        strcat(new_buffer, expression); 
+        strcat(new_buffer, " ");
+        expression = strtok(NULL, " ");
     }
 
-    return 0;
-
-    // if (strcmp(expression, "😃 🎂") == 0) {
-    //     return 1;
-    // } else if (strcmp(expression, "merry christmas") == 0) {
-    //     return 1;
-    // } else if (strcmp(expression, "welcome home") == 0) {
-    //     return 1;
-    // } else if (strcmp(expression, "good luck") == 0) {
-    //     return 1;
-    // }
-    // // Add more checks for other expressions
-
-    // return 0; // No expression match found
-}
-const char* get_emoji(char *expression) {
-
-
-printf("hello get emoji\n");
-        printf("next!!!-> %s comp: \n",expression);
-
-    if (strcmp(expression, "😃 🎂") == 0) {
-        return "🥳";
-    } else if (strcmp(expression, "merry christmas") == 0) {
-        return "🎄";
-    } else if (strcmp(expression, "welcome home") == 0) {
-        return "🏡";
-    } else if (strcmp(expression, "good luck") == 0) {
-        return "🍀";
-    }
-    // Add more checks for other expressions
-
-    return "🤷"; // No expression match found
+    strcpy(buffer, new_buffer); 
+    free(new_buffer); 
 }
