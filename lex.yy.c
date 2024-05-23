@@ -351,8 +351,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 25
-#define YY_END_OF_BUFFER 26
+#define YY_NUM_RULES 26
+#define YY_END_OF_BUFFER 27
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -362,16 +362,16 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[94] =
     {   0,
-        0,    0,   26,   24,    1,   25,   23,   22,   21,   20,
-       20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
-       20,   20,    1,   21,   20,   20,   20,   20,   20,   20,
-       20,   20,   20,   20,   20,   20,   20,   20,   20,   20,
-       20,   20,    3,   15,   11,   20,   20,   20,   20,   20,
-       20,   20,   20,   20,   20,    2,   20,   20,    8,   14,
-       20,   20,    5,   20,   20,   20,   13,   17,   20,    7,
-       20,   20,   10,   20,   20,   16,   20,   20,   20,   20,
-        9,   20,   19,   20,   20,   20,   18,   20,    4,   20,
-       12,    6,    0
+        0,    0,   27,   25,    1,    2,   24,   23,   22,   21,
+       21,   21,   21,   21,   21,   21,   21,   21,   21,   21,
+       21,   21,    1,   22,   21,   21,   21,   21,   21,   21,
+       21,   21,   21,   21,   21,   21,   21,   21,   21,   21,
+       21,   21,    4,   16,   12,   21,   21,   21,   21,   21,
+       21,   21,   21,   21,   21,    3,   21,   21,    9,   15,
+       21,   21,    6,   21,   21,   21,   14,   18,   21,    8,
+       21,   21,   11,   21,   21,   17,   21,   21,   21,   21,
+       10,   21,   20,   21,   21,   21,   19,   21,    5,   21,
+       13,    7,    0
 
     } ;
 
@@ -817,96 +817,102 @@ YY_RULE_SETUP
 ; 
 	YY_BREAK
 case 2:
+/* rule 2 can match eol */
+YY_RULE_SETUP
+#line 50 "emoji.l"
+{return NEW_LINE;}
+	YY_BREAK
+case 3:
 YY_RULE_SETUP
 #line 51 "emoji.l"
 { yylval.num = 1; yylval.noun_flag = PLURAL_FLAG; flags |= HAS_SUBJECT_FLAG; return BIRD; }
 	YY_BREAK
-case 3:
+case 4:
 YY_RULE_SETUP
 #line 52 "emoji.l"
 { yylval.num = 1; yylval.noun_flag = PLURAL_FLAG; flags |= HAS_SUBJECT_FLAG; return DOG; }
 	YY_BREAK
-case 4:
+case 5:
 YY_RULE_SETUP
 #line 53 "emoji.l"
 { yylval.num = 1; yylval.noun_flag = PLURAL_FLAG; flags |= HAS_SUBJECT_FLAG; return BIRTHDAY; }
 	YY_BREAK
-case 5:
+case 6:
 YY_RULE_SETUP
 #line 54 "emoji.l"
 { yylval.num = 1; yylval.noun_flag = PLURAL_FLAG; flags |= HAS_SUBJECT_FLAG; return LUCK; }
 	YY_BREAK
-case 6:
+case 7:
 YY_RULE_SETUP
 #line 55 "emoji.l"
 { yylval.num = 1; yylval.noun_flag = PLURAL_FLAG; flags |= HAS_SUBJECT_FLAG; return CHRISTMAS; }
 	YY_BREAK
-case 7:
+case 8:
 YY_RULE_SETUP
 #line 57 "emoji.l"
 { yylval.num = 2; yylval.noun_flag = PLURAL_FLAG; flags |= HAS_SUBJECT_FLAG; return BIRD; }
 	YY_BREAK
-case 8:
+case 9:
 YY_RULE_SETUP
 #line 58 "emoji.l"
 { yylval.num = 2; yylval.noun_flag = PLURAL_FLAG; flags |= HAS_SUBJECT_FLAG; return DOG; }
 	YY_BREAK
-case 9:
+case 10:
 YY_RULE_SETUP
 #line 61 "emoji.l"
 { flags |= HAS_ADJECTIVE_FLAG; yylval.adjective_flag = 1; return LITTLE; }
 	YY_BREAK
-case 10:
+case 11:
 YY_RULE_SETUP
 #line 62 "emoji.l"
 { flags |= HAS_ADJECTIVE_FLAG; yylval.adjective_flag = 1; return HAPPY; }
 	YY_BREAK
-case 11:
+case 12:
 YY_RULE_SETUP
 #line 63 "emoji.l"
 { flags |= HAS_ADJECTIVE_FLAG; yylval.adjective_flag = 1; return FEW; }
 	YY_BREAK
-case 12:
+case 13:
 YY_RULE_SETUP
 #line 64 "emoji.l"
 { flags |= HAS_ADJECTIVE_FLAG; yylval.adjective_flag = 1; return BEAUTIFUL; }
 	YY_BREAK
-case 13:
+case 14:
 YY_RULE_SETUP
 #line 65 "emoji.l"
 { flags |= HAS_ADJECTIVE_FLAG; yylval.adjective_flag = 1; return UGLY; }
 	YY_BREAK
-case 14:
+case 15:
 YY_RULE_SETUP
 #line 66 "emoji.l"
 { flags |= HAS_ADJECTIVE_FLAG; yylval.adjective_flag = 1; return GOOD; }
 	YY_BREAK
-case 15:
+case 16:
 YY_RULE_SETUP
 #line 68 "emoji.l"
 { flags |= HAS_VERB_FLAG; yylval.verb_flag = 1; return EAT; }
 	YY_BREAK
-case 16:
+case 17:
 YY_RULE_SETUP
 #line 69 "emoji.l"
 { flags |= HAS_VERB_FLAG; yylval.verb_flag = 1; return SLEEP; }
 	YY_BREAK
-case 17:
+case 18:
 YY_RULE_SETUP
 #line 70 "emoji.l"
 { flags |= HAS_VERB_FLAG; yylval.verb_flag = 1; return WALK; }
 	YY_BREAK
-case 18:
+case 19:
 YY_RULE_SETUP
 #line 72 "emoji.l"
 { flags |= HAS_ADVERB_FLAG; yylval.adverb_flag = 1; return QUICKLY; }
 	YY_BREAK
-case 19:
+case 20:
 YY_RULE_SETUP
 #line 73 "emoji.l"
 { flags |= HAS_ADVERB_FLAG; yylval.adverb_flag = 1; return SLOWLY; }
 	YY_BREAK
-case 20:
+case 21:
 YY_RULE_SETUP
 #line 74 "emoji.l"
 { int token = get_main_token(yytext);
@@ -918,32 +924,32 @@ YY_RULE_SETUP
                     }
                 }
 	YY_BREAK
-case 21:
+case 22:
 YY_RULE_SETUP
 #line 82 "emoji.l"
 { yylval.num = atoi(yytext); return NUMBER; }
 	YY_BREAK
-case 22:
+case 23:
 YY_RULE_SETUP
 #line 84 "emoji.l"
 { return DASH; }
 	YY_BREAK
-case 23:
+case 24:
 YY_RULE_SETUP
 #line 85 "emoji.l"
 { return EXCLAMATION; }
 	YY_BREAK
-case 24:
+case 25:
 YY_RULE_SETUP
 #line 86 "emoji.l"
 { return yytext[0]; }
 	YY_BREAK
-case 25:
+case 26:
 YY_RULE_SETUP
 #line 88 "emoji.l"
 ECHO;
 	YY_BREAK
-#line 947 "lex.yy.c"
+#line 953 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 

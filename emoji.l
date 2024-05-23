@@ -47,7 +47,7 @@ digit [0-9]
 %%
 
 [\t\r ]+                      ; 
-
+\n              {return NEW_LINE;}
 "bird"          { yylval.num = 1; yylval.noun_flag = PLURAL_FLAG; flags |= HAS_SUBJECT_FLAG; return BIRD; }
 "dog"           { yylval.num = 1; yylval.noun_flag = PLURAL_FLAG; flags |= HAS_SUBJECT_FLAG; return DOG; }
 "birthday"          { yylval.num = 1; yylval.noun_flag = PLURAL_FLAG; flags |= HAS_SUBJECT_FLAG; return BIRTHDAY; }
