@@ -73,6 +73,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 void yyerror(const char *s);
 void print_emoji(const char *emoji, int count);
 void save_buffer(char* word);
@@ -84,9 +85,9 @@ static char buffer[10000];
 static int n = 0;
 
 typedef struct {
-    const char *name;       // Name of the lexical field
-    const char **emojis;   // Array of emojis in the lexical field
-    const char **keywords; // Array of keywords associated with the lexical field
+    const char *name;       
+    const char **emojis;  
+    const char **keywords; 
     int num_keywords;
     int num_emoji;
 } LexicalField;
@@ -96,7 +97,7 @@ const char *animal_keywords[] = {"animal", "pet", "bird", "dog", "cat", "fish", 
                                   "mammal", "reptile", "bird", "feline", "canine"};
 
 const char *object_emojis[] = {"🌳", "💻", "🚗", "📖", "💻", "📱"};
-const char *object_keywords[] = {"object", "thing", "tree", "house", "car", "book", "computer", "phone",
+const char *object_keywords[] = {"object", "things", "thing" "tree", "house", "car", "book", "computer", "phone",
                                    "device", "machine", "vehicle", "building", "structure"};
 
 const char *food_emojis[] = {"🍔", "🍟", "🍕", "🍎", "🍇", "🍦"};
@@ -126,7 +127,7 @@ LexicalField lexical_fields[] = {
 };
 
 
-#line 130 "y.tab.c"
+#line 131 "y.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -188,47 +189,134 @@ extern int yydebug;
     BIRTHDAY = 276,                /* BIRTHDAY  */
     LUCK = 277,                    /* LUCK  */
     CHRISTMAS = 278,               /* CHRISTMAS  */
-    LITTLE = 279,                  /* LITTLE  */
-    BIG = 280,                     /* BIG  */
-    FEW = 281,                     /* FEW  */
-    BEAUTIFUL = 282,               /* BEAUTIFUL  */
-    UGLY = 283,                    /* UGLY  */
-    NICE = 284,                    /* NICE  */
-    HAPPY = 285,                   /* HAPPY  */
-    SAD = 286,                     /* SAD  */
-    ANGRY = 287,                   /* ANGRY  */
-    FAST = 288,                    /* FAST  */
-    SLOW = 289,                    /* SLOW  */
-    STRONG = 290,                  /* STRONG  */
-    WEAK = 291,                    /* WEAK  */
-    SMART = 292,                   /* SMART  */
-    DUMB = 293,                    /* DUMB  */
-    OLD = 294,                     /* OLD  */
-    YOUNG = 295,                   /* YOUNG  */
-    HOT = 296,                     /* HOT  */
-    COLD = 297,                    /* COLD  */
-    GOOD = 298,                    /* GOOD  */
-    WALK = 299,                    /* WALK  */
-    TALK = 300,                    /* TALK  */
-    DRINK = 301,                   /* DRINK  */
-    EAT = 302,                     /* EAT  */
-    SLEEP = 303,                   /* SLEEP  */
-    RUN = 304,                     /* RUN  */
-    READ = 305,                    /* READ  */
-    WRITE = 306,                   /* WRITE  */
-    PLAY = 307,                    /* PLAY  */
-    SING = 308,                    /* SING  */
-    DAILY = 309,                   /* DAILY  */
-    QUICKLY = 310,                 /* QUICKLY  */
-    SLOWLY = 311,                  /* SLOWLY  */
-    HAPPILY = 312,                 /* HAPPILY  */
-    SADLY = 313,                   /* SADLY  */
-    LOUDLY = 314,                  /* LOUDLY  */
-    QUIETLY = 315,                 /* QUIETLY  */
-    ALWAYS = 316,                  /* ALWAYS  */
-    NEVER = 317,                   /* NEVER  */
-    DASH = 318,                    /* DASH  */
-    EXCLAMATION = 319              /* EXCLAMATION  */
+    APPLE = 279,                   /* APPLE  */
+    BANANA = 280,                  /* BANANA  */
+    GRAPE = 281,                   /* GRAPE  */
+    ORANGE = 282,                  /* ORANGE  */
+    PEAR = 283,                    /* PEAR  */
+    STRAWBERRY = 284,              /* STRAWBERRY  */
+    LEMON = 285,                   /* LEMON  */
+    PEACH = 286,                   /* PEACH  */
+    PLUM = 287,                    /* PLUM  */
+    PINEAPPLE = 288,               /* PINEAPPLE  */
+    CHAIR = 289,                   /* CHAIR  */
+    TABLE = 290,                   /* TABLE  */
+    DESK = 291,                    /* DESK  */
+    WINDOW = 292,                  /* WINDOW  */
+    DOOR = 293,                    /* DOOR  */
+    CUP = 294,                     /* CUP  */
+    BOTTLE = 295,                  /* BOTTLE  */
+    PEN = 296,                     /* PEN  */
+    PENCIL = 297,                  /* PENCIL  */
+    I = 298,                       /* I  */
+    ME = 299,                      /* ME  */
+    YOU = 300,                     /* YOU  */
+    HE = 301,                      /* HE  */
+    HIM = 302,                     /* HIM  */
+    SHE = 303,                     /* SHE  */
+    HER = 304,                     /* HER  */
+    IT = 305,                      /* IT  */
+    WE = 306,                      /* WE  */
+    US = 307,                      /* US  */
+    THEY = 308,                    /* THEY  */
+    THEM = 309,                    /* THEM  */
+    MERRY = 310,                   /* MERRY  */
+    LITTLE = 311,                  /* LITTLE  */
+    BIG = 312,                     /* BIG  */
+    FEW = 313,                     /* FEW  */
+    BEAUTIFUL = 314,               /* BEAUTIFUL  */
+    UGLY = 315,                    /* UGLY  */
+    NICE = 316,                    /* NICE  */
+    HAPPY = 317,                   /* HAPPY  */
+    SAD = 318,                     /* SAD  */
+    ANGRY = 319,                   /* ANGRY  */
+    FAST = 320,                    /* FAST  */
+    SLOW = 321,                    /* SLOW  */
+    STRONG = 322,                  /* STRONG  */
+    WEAK = 323,                    /* WEAK  */
+    SMART = 324,                   /* SMART  */
+    DUMB = 325,                    /* DUMB  */
+    OLD = 326,                     /* OLD  */
+    YOUNG = 327,                   /* YOUNG  */
+    HOT = 328,                     /* HOT  */
+    COLD = 329,                    /* COLD  */
+    GOOD = 330,                    /* GOOD  */
+    COOL = 331,                    /* COOL  */
+    FUNNY = 332,                   /* FUNNY  */
+    SCARY = 333,                   /* SCARY  */
+    BRAVE = 334,                   /* BRAVE  */
+    CLEVER = 335,                  /* CLEVER  */
+    LAZY = 336,                    /* LAZY  */
+    BUSY = 337,                    /* BUSY  */
+    QUIET = 338,                   /* QUIET  */
+    LOUD = 339,                    /* LOUD  */
+    DIRTY = 340,                   /* DIRTY  */
+    CONFUSED = 341,                /* CONFUSED  */
+    SHY = 342,                     /* SHY  */
+    FRIENDLY = 343,                /* FRIENDLY  */
+    ALONE = 344,                   /* ALONE  */
+    CREATIVE = 345,                /* CREATIVE  */
+    SERIOUS = 346,                 /* SERIOUS  */
+    EXCITED = 347,                 /* EXCITED  */
+    GRATEFUL = 348,                /* GRATEFUL  */
+    HOPEFUL = 349,                 /* HOPEFUL  */
+    PROUD = 350,                   /* PROUD  */
+    TIRED = 351,                   /* TIRED  */
+    RELAXED = 352,                 /* RELAXED  */
+    STRESSED = 353,                /* STRESSED  */
+    CALM = 354,                    /* CALM  */
+    ENERGETIC = 355,               /* ENERGETIC  */
+    WALK = 356,                    /* WALK  */
+    TALK = 357,                    /* TALK  */
+    DRINK = 358,                   /* DRINK  */
+    EAT = 359,                     /* EAT  */
+    SLEEP = 360,                   /* SLEEP  */
+    RUN = 361,                     /* RUN  */
+    READ = 362,                    /* READ  */
+    WRITE = 363,                   /* WRITE  */
+    PLAY = 364,                    /* PLAY  */
+    SING = 365,                    /* SING  */
+    DANCE = 366,                   /* DANCE  */
+    JUMP = 367,                    /* JUMP  */
+    SWIM = 368,                    /* SWIM  */
+    COOK = 369,                    /* COOK  */
+    FLY = 370,                     /* FLY  */
+    DRIVE = 371,                   /* DRIVE  */
+    STUDY = 372,                   /* STUDY  */
+    WORK = 373,                    /* WORK  */
+    PAINT = 374,                   /* PAINT  */
+    DRAW = 375,                    /* DRAW  */
+    LISTEN = 376,                  /* LISTEN  */
+    HELP = 377,                    /* HELP  */
+    CLEAN = 378,                   /* CLEAN  */
+    BUILD = 379,                   /* BUILD  */
+    WATCH = 380,                   /* WATCH  */
+    TEACH = 381,                   /* TEACH  */
+    LEARN = 382,                   /* LEARN  */
+    DAILY = 383,                   /* DAILY  */
+    QUICKLY = 384,                 /* QUICKLY  */
+    SLOWLY = 385,                  /* SLOWLY  */
+    HAPPILY = 386,                 /* HAPPILY  */
+    SADLY = 387,                   /* SADLY  */
+    LOUDLY = 388,                  /* LOUDLY  */
+    QUIETLY = 389,                 /* QUIETLY  */
+    ALWAYS = 390,                  /* ALWAYS  */
+    NEVER = 391,                   /* NEVER  */
+    CAREFULLY = 392,               /* CAREFULLY  */
+    OFTEN = 393,                   /* OFTEN  */
+    RARELY = 394,                  /* RARELY  */
+    SUDDENLY = 395,                /* SUDDENLY  */
+    ANXIOUSLY = 396,               /* ANXIOUSLY  */
+    CONFIDENTLY = 397,             /* CONFIDENTLY  */
+    EAGERLY = 398,                 /* EAGERLY  */
+    GRACEFULLY = 399,              /* GRACEFULLY  */
+    SILLY = 400,                   /* SILLY  */
+    AWKWARDLY = 401,               /* AWKWARDLY  */
+    CURIOUSLY = 402,               /* CURIOUSLY  */
+    PATIENTLY = 403,               /* PATIENTLY  */
+    NERVOUSLY = 404,               /* NERVOUSLY  */
+    DASH = 405,                    /* DASH  */
+    EXCLAMATION = 406              /* EXCLAMATION  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -258,63 +346,149 @@ extern int yydebug;
 #define BIRTHDAY 276
 #define LUCK 277
 #define CHRISTMAS 278
-#define LITTLE 279
-#define BIG 280
-#define FEW 281
-#define BEAUTIFUL 282
-#define UGLY 283
-#define NICE 284
-#define HAPPY 285
-#define SAD 286
-#define ANGRY 287
-#define FAST 288
-#define SLOW 289
-#define STRONG 290
-#define WEAK 291
-#define SMART 292
-#define DUMB 293
-#define OLD 294
-#define YOUNG 295
-#define HOT 296
-#define COLD 297
-#define GOOD 298
-#define WALK 299
-#define TALK 300
-#define DRINK 301
-#define EAT 302
-#define SLEEP 303
-#define RUN 304
-#define READ 305
-#define WRITE 306
-#define PLAY 307
-#define SING 308
-#define DAILY 309
-#define QUICKLY 310
-#define SLOWLY 311
-#define HAPPILY 312
-#define SADLY 313
-#define LOUDLY 314
-#define QUIETLY 315
-#define ALWAYS 316
-#define NEVER 317
-#define DASH 318
-#define EXCLAMATION 319
+#define APPLE 279
+#define BANANA 280
+#define GRAPE 281
+#define ORANGE 282
+#define PEAR 283
+#define STRAWBERRY 284
+#define LEMON 285
+#define PEACH 286
+#define PLUM 287
+#define PINEAPPLE 288
+#define CHAIR 289
+#define TABLE 290
+#define DESK 291
+#define WINDOW 292
+#define DOOR 293
+#define CUP 294
+#define BOTTLE 295
+#define PEN 296
+#define PENCIL 297
+#define I 298
+#define ME 299
+#define YOU 300
+#define HE 301
+#define HIM 302
+#define SHE 303
+#define HER 304
+#define IT 305
+#define WE 306
+#define US 307
+#define THEY 308
+#define THEM 309
+#define MERRY 310
+#define LITTLE 311
+#define BIG 312
+#define FEW 313
+#define BEAUTIFUL 314
+#define UGLY 315
+#define NICE 316
+#define HAPPY 317
+#define SAD 318
+#define ANGRY 319
+#define FAST 320
+#define SLOW 321
+#define STRONG 322
+#define WEAK 323
+#define SMART 324
+#define DUMB 325
+#define OLD 326
+#define YOUNG 327
+#define HOT 328
+#define COLD 329
+#define GOOD 330
+#define COOL 331
+#define FUNNY 332
+#define SCARY 333
+#define BRAVE 334
+#define CLEVER 335
+#define LAZY 336
+#define BUSY 337
+#define QUIET 338
+#define LOUD 339
+#define DIRTY 340
+#define CONFUSED 341
+#define SHY 342
+#define FRIENDLY 343
+#define ALONE 344
+#define CREATIVE 345
+#define SERIOUS 346
+#define EXCITED 347
+#define GRATEFUL 348
+#define HOPEFUL 349
+#define PROUD 350
+#define TIRED 351
+#define RELAXED 352
+#define STRESSED 353
+#define CALM 354
+#define ENERGETIC 355
+#define WALK 356
+#define TALK 357
+#define DRINK 358
+#define EAT 359
+#define SLEEP 360
+#define RUN 361
+#define READ 362
+#define WRITE 363
+#define PLAY 364
+#define SING 365
+#define DANCE 366
+#define JUMP 367
+#define SWIM 368
+#define COOK 369
+#define FLY 370
+#define DRIVE 371
+#define STUDY 372
+#define WORK 373
+#define PAINT 374
+#define DRAW 375
+#define LISTEN 376
+#define HELP 377
+#define CLEAN 378
+#define BUILD 379
+#define WATCH 380
+#define TEACH 381
+#define LEARN 382
+#define DAILY 383
+#define QUICKLY 384
+#define SLOWLY 385
+#define HAPPILY 386
+#define SADLY 387
+#define LOUDLY 388
+#define QUIETLY 389
+#define ALWAYS 390
+#define NEVER 391
+#define CAREFULLY 392
+#define OFTEN 393
+#define RARELY 394
+#define SUDDENLY 395
+#define ANXIOUSLY 396
+#define CONFIDENTLY 397
+#define EAGERLY 398
+#define GRACEFULLY 399
+#define SILLY 400
+#define AWKWARDLY 401
+#define CURIOUSLY 402
+#define PATIENTLY 403
+#define NERVOUSLY 404
+#define DASH 405
+#define EXCLAMATION 406
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 60 "emoji.y"
+#line 61 "emoji.y"
 
     char *str;
     int num;
-    int plural_flag;
-    int noun_flag;
+    int subject_flag;
     int adjective_flag;
     int verb_flag;
     int adverb_flag;
 
-#line 318 "y.tab.c"
+#line 492 "y.tab.c"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -358,65 +532,155 @@ enum yysymbol_kind_t
   YYSYMBOL_BIRTHDAY = 21,                  /* BIRTHDAY  */
   YYSYMBOL_LUCK = 22,                      /* LUCK  */
   YYSYMBOL_CHRISTMAS = 23,                 /* CHRISTMAS  */
-  YYSYMBOL_LITTLE = 24,                    /* LITTLE  */
-  YYSYMBOL_BIG = 25,                       /* BIG  */
-  YYSYMBOL_FEW = 26,                       /* FEW  */
-  YYSYMBOL_BEAUTIFUL = 27,                 /* BEAUTIFUL  */
-  YYSYMBOL_UGLY = 28,                      /* UGLY  */
-  YYSYMBOL_NICE = 29,                      /* NICE  */
-  YYSYMBOL_HAPPY = 30,                     /* HAPPY  */
-  YYSYMBOL_SAD = 31,                       /* SAD  */
-  YYSYMBOL_ANGRY = 32,                     /* ANGRY  */
-  YYSYMBOL_FAST = 33,                      /* FAST  */
-  YYSYMBOL_SLOW = 34,                      /* SLOW  */
-  YYSYMBOL_STRONG = 35,                    /* STRONG  */
-  YYSYMBOL_WEAK = 36,                      /* WEAK  */
-  YYSYMBOL_SMART = 37,                     /* SMART  */
-  YYSYMBOL_DUMB = 38,                      /* DUMB  */
-  YYSYMBOL_OLD = 39,                       /* OLD  */
-  YYSYMBOL_YOUNG = 40,                     /* YOUNG  */
-  YYSYMBOL_HOT = 41,                       /* HOT  */
-  YYSYMBOL_COLD = 42,                      /* COLD  */
-  YYSYMBOL_GOOD = 43,                      /* GOOD  */
-  YYSYMBOL_WALK = 44,                      /* WALK  */
-  YYSYMBOL_TALK = 45,                      /* TALK  */
-  YYSYMBOL_DRINK = 46,                     /* DRINK  */
-  YYSYMBOL_EAT = 47,                       /* EAT  */
-  YYSYMBOL_SLEEP = 48,                     /* SLEEP  */
-  YYSYMBOL_RUN = 49,                       /* RUN  */
-  YYSYMBOL_READ = 50,                      /* READ  */
-  YYSYMBOL_WRITE = 51,                     /* WRITE  */
-  YYSYMBOL_PLAY = 52,                      /* PLAY  */
-  YYSYMBOL_SING = 53,                      /* SING  */
-  YYSYMBOL_DAILY = 54,                     /* DAILY  */
-  YYSYMBOL_QUICKLY = 55,                   /* QUICKLY  */
-  YYSYMBOL_SLOWLY = 56,                    /* SLOWLY  */
-  YYSYMBOL_HAPPILY = 57,                   /* HAPPILY  */
-  YYSYMBOL_SADLY = 58,                     /* SADLY  */
-  YYSYMBOL_LOUDLY = 59,                    /* LOUDLY  */
-  YYSYMBOL_QUIETLY = 60,                   /* QUIETLY  */
-  YYSYMBOL_ALWAYS = 61,                    /* ALWAYS  */
-  YYSYMBOL_NEVER = 62,                     /* NEVER  */
-  YYSYMBOL_DASH = 63,                      /* DASH  */
-  YYSYMBOL_EXCLAMATION = 64,               /* EXCLAMATION  */
-  YYSYMBOL_65_ = 65,                       /* ','  */
-  YYSYMBOL_YYACCEPT = 66,                  /* $accept  */
-  YYSYMBOL_poem = 67,                      /* poem  */
-  YYSYMBOL_lines = 68,                     /* lines  */
-  YYSYMBOL_line = 69,                      /* line  */
-  YYSYMBOL_sentences = 70,                 /* sentences  */
-  YYSYMBOL_sentence = 71,                  /* sentence  */
-  YYSYMBOL_counted_noun = 72,              /* counted_noun  */
-  YYSYMBOL_counted_nouns = 73,             /* counted_nouns  */
-  YYSYMBOL_adjective_aux = 74,             /* adjective_aux  */
-  YYSYMBOL_verb_aux = 75,                  /* verb_aux  */
-  YYSYMBOL_adverb_aux = 76,                /* adverb_aux  */
-  YYSYMBOL_unknown_word = 77,              /* unknown_word  */
-  YYSYMBOL_number = 78,                    /* number  */
-  YYSYMBOL_noun = 79,                      /* noun  */
-  YYSYMBOL_adjective = 80,                 /* adjective  */
-  YYSYMBOL_verb = 81,                      /* verb  */
-  YYSYMBOL_adverb = 82                     /* adverb  */
+  YYSYMBOL_APPLE = 24,                     /* APPLE  */
+  YYSYMBOL_BANANA = 25,                    /* BANANA  */
+  YYSYMBOL_GRAPE = 26,                     /* GRAPE  */
+  YYSYMBOL_ORANGE = 27,                    /* ORANGE  */
+  YYSYMBOL_PEAR = 28,                      /* PEAR  */
+  YYSYMBOL_STRAWBERRY = 29,                /* STRAWBERRY  */
+  YYSYMBOL_LEMON = 30,                     /* LEMON  */
+  YYSYMBOL_PEACH = 31,                     /* PEACH  */
+  YYSYMBOL_PLUM = 32,                      /* PLUM  */
+  YYSYMBOL_PINEAPPLE = 33,                 /* PINEAPPLE  */
+  YYSYMBOL_CHAIR = 34,                     /* CHAIR  */
+  YYSYMBOL_TABLE = 35,                     /* TABLE  */
+  YYSYMBOL_DESK = 36,                      /* DESK  */
+  YYSYMBOL_WINDOW = 37,                    /* WINDOW  */
+  YYSYMBOL_DOOR = 38,                      /* DOOR  */
+  YYSYMBOL_CUP = 39,                       /* CUP  */
+  YYSYMBOL_BOTTLE = 40,                    /* BOTTLE  */
+  YYSYMBOL_PEN = 41,                       /* PEN  */
+  YYSYMBOL_PENCIL = 42,                    /* PENCIL  */
+  YYSYMBOL_I = 43,                         /* I  */
+  YYSYMBOL_ME = 44,                        /* ME  */
+  YYSYMBOL_YOU = 45,                       /* YOU  */
+  YYSYMBOL_HE = 46,                        /* HE  */
+  YYSYMBOL_HIM = 47,                       /* HIM  */
+  YYSYMBOL_SHE = 48,                       /* SHE  */
+  YYSYMBOL_HER = 49,                       /* HER  */
+  YYSYMBOL_IT = 50,                        /* IT  */
+  YYSYMBOL_WE = 51,                        /* WE  */
+  YYSYMBOL_US = 52,                        /* US  */
+  YYSYMBOL_THEY = 53,                      /* THEY  */
+  YYSYMBOL_THEM = 54,                      /* THEM  */
+  YYSYMBOL_MERRY = 55,                     /* MERRY  */
+  YYSYMBOL_LITTLE = 56,                    /* LITTLE  */
+  YYSYMBOL_BIG = 57,                       /* BIG  */
+  YYSYMBOL_FEW = 58,                       /* FEW  */
+  YYSYMBOL_BEAUTIFUL = 59,                 /* BEAUTIFUL  */
+  YYSYMBOL_UGLY = 60,                      /* UGLY  */
+  YYSYMBOL_NICE = 61,                      /* NICE  */
+  YYSYMBOL_HAPPY = 62,                     /* HAPPY  */
+  YYSYMBOL_SAD = 63,                       /* SAD  */
+  YYSYMBOL_ANGRY = 64,                     /* ANGRY  */
+  YYSYMBOL_FAST = 65,                      /* FAST  */
+  YYSYMBOL_SLOW = 66,                      /* SLOW  */
+  YYSYMBOL_STRONG = 67,                    /* STRONG  */
+  YYSYMBOL_WEAK = 68,                      /* WEAK  */
+  YYSYMBOL_SMART = 69,                     /* SMART  */
+  YYSYMBOL_DUMB = 70,                      /* DUMB  */
+  YYSYMBOL_OLD = 71,                       /* OLD  */
+  YYSYMBOL_YOUNG = 72,                     /* YOUNG  */
+  YYSYMBOL_HOT = 73,                       /* HOT  */
+  YYSYMBOL_COLD = 74,                      /* COLD  */
+  YYSYMBOL_GOOD = 75,                      /* GOOD  */
+  YYSYMBOL_COOL = 76,                      /* COOL  */
+  YYSYMBOL_FUNNY = 77,                     /* FUNNY  */
+  YYSYMBOL_SCARY = 78,                     /* SCARY  */
+  YYSYMBOL_BRAVE = 79,                     /* BRAVE  */
+  YYSYMBOL_CLEVER = 80,                    /* CLEVER  */
+  YYSYMBOL_LAZY = 81,                      /* LAZY  */
+  YYSYMBOL_BUSY = 82,                      /* BUSY  */
+  YYSYMBOL_QUIET = 83,                     /* QUIET  */
+  YYSYMBOL_LOUD = 84,                      /* LOUD  */
+  YYSYMBOL_DIRTY = 85,                     /* DIRTY  */
+  YYSYMBOL_CONFUSED = 86,                  /* CONFUSED  */
+  YYSYMBOL_SHY = 87,                       /* SHY  */
+  YYSYMBOL_FRIENDLY = 88,                  /* FRIENDLY  */
+  YYSYMBOL_ALONE = 89,                     /* ALONE  */
+  YYSYMBOL_CREATIVE = 90,                  /* CREATIVE  */
+  YYSYMBOL_SERIOUS = 91,                   /* SERIOUS  */
+  YYSYMBOL_EXCITED = 92,                   /* EXCITED  */
+  YYSYMBOL_GRATEFUL = 93,                  /* GRATEFUL  */
+  YYSYMBOL_HOPEFUL = 94,                   /* HOPEFUL  */
+  YYSYMBOL_PROUD = 95,                     /* PROUD  */
+  YYSYMBOL_TIRED = 96,                     /* TIRED  */
+  YYSYMBOL_RELAXED = 97,                   /* RELAXED  */
+  YYSYMBOL_STRESSED = 98,                  /* STRESSED  */
+  YYSYMBOL_CALM = 99,                      /* CALM  */
+  YYSYMBOL_ENERGETIC = 100,                /* ENERGETIC  */
+  YYSYMBOL_WALK = 101,                     /* WALK  */
+  YYSYMBOL_TALK = 102,                     /* TALK  */
+  YYSYMBOL_DRINK = 103,                    /* DRINK  */
+  YYSYMBOL_EAT = 104,                      /* EAT  */
+  YYSYMBOL_SLEEP = 105,                    /* SLEEP  */
+  YYSYMBOL_RUN = 106,                      /* RUN  */
+  YYSYMBOL_READ = 107,                     /* READ  */
+  YYSYMBOL_WRITE = 108,                    /* WRITE  */
+  YYSYMBOL_PLAY = 109,                     /* PLAY  */
+  YYSYMBOL_SING = 110,                     /* SING  */
+  YYSYMBOL_DANCE = 111,                    /* DANCE  */
+  YYSYMBOL_JUMP = 112,                     /* JUMP  */
+  YYSYMBOL_SWIM = 113,                     /* SWIM  */
+  YYSYMBOL_COOK = 114,                     /* COOK  */
+  YYSYMBOL_FLY = 115,                      /* FLY  */
+  YYSYMBOL_DRIVE = 116,                    /* DRIVE  */
+  YYSYMBOL_STUDY = 117,                    /* STUDY  */
+  YYSYMBOL_WORK = 118,                     /* WORK  */
+  YYSYMBOL_PAINT = 119,                    /* PAINT  */
+  YYSYMBOL_DRAW = 120,                     /* DRAW  */
+  YYSYMBOL_LISTEN = 121,                   /* LISTEN  */
+  YYSYMBOL_HELP = 122,                     /* HELP  */
+  YYSYMBOL_CLEAN = 123,                    /* CLEAN  */
+  YYSYMBOL_BUILD = 124,                    /* BUILD  */
+  YYSYMBOL_WATCH = 125,                    /* WATCH  */
+  YYSYMBOL_TEACH = 126,                    /* TEACH  */
+  YYSYMBOL_LEARN = 127,                    /* LEARN  */
+  YYSYMBOL_DAILY = 128,                    /* DAILY  */
+  YYSYMBOL_QUICKLY = 129,                  /* QUICKLY  */
+  YYSYMBOL_SLOWLY = 130,                   /* SLOWLY  */
+  YYSYMBOL_HAPPILY = 131,                  /* HAPPILY  */
+  YYSYMBOL_SADLY = 132,                    /* SADLY  */
+  YYSYMBOL_LOUDLY = 133,                   /* LOUDLY  */
+  YYSYMBOL_QUIETLY = 134,                  /* QUIETLY  */
+  YYSYMBOL_ALWAYS = 135,                   /* ALWAYS  */
+  YYSYMBOL_NEVER = 136,                    /* NEVER  */
+  YYSYMBOL_CAREFULLY = 137,                /* CAREFULLY  */
+  YYSYMBOL_OFTEN = 138,                    /* OFTEN  */
+  YYSYMBOL_RARELY = 139,                   /* RARELY  */
+  YYSYMBOL_SUDDENLY = 140,                 /* SUDDENLY  */
+  YYSYMBOL_ANXIOUSLY = 141,                /* ANXIOUSLY  */
+  YYSYMBOL_CONFIDENTLY = 142,              /* CONFIDENTLY  */
+  YYSYMBOL_EAGERLY = 143,                  /* EAGERLY  */
+  YYSYMBOL_GRACEFULLY = 144,               /* GRACEFULLY  */
+  YYSYMBOL_SILLY = 145,                    /* SILLY  */
+  YYSYMBOL_AWKWARDLY = 146,                /* AWKWARDLY  */
+  YYSYMBOL_CURIOUSLY = 147,                /* CURIOUSLY  */
+  YYSYMBOL_PATIENTLY = 148,                /* PATIENTLY  */
+  YYSYMBOL_NERVOUSLY = 149,                /* NERVOUSLY  */
+  YYSYMBOL_DASH = 150,                     /* DASH  */
+  YYSYMBOL_EXCLAMATION = 151,              /* EXCLAMATION  */
+  YYSYMBOL_152_ = 152,                     /* ','  */
+  YYSYMBOL_YYACCEPT = 153,                 /* $accept  */
+  YYSYMBOL_poem = 154,                     /* poem  */
+  YYSYMBOL_lines = 155,                    /* lines  */
+  YYSYMBOL_line = 156,                     /* line  */
+  YYSYMBOL_sentences = 157,                /* sentences  */
+  YYSYMBOL_sentence = 158,                 /* sentence  */
+  YYSYMBOL_counted_noun = 159,             /* counted_noun  */
+  YYSYMBOL_subject = 160,                  /* subject  */
+  YYSYMBOL_counted_nouns = 161,            /* counted_nouns  */
+  YYSYMBOL_adjective_aux = 162,            /* adjective_aux  */
+  YYSYMBOL_verb_aux = 163,                 /* verb_aux  */
+  YYSYMBOL_adverb_aux = 164,               /* adverb_aux  */
+  YYSYMBOL_pronoun_aux = 165,              /* pronoun_aux  */
+  YYSYMBOL_unknown_word = 166,             /* unknown_word  */
+  YYSYMBOL_number = 167,                   /* number  */
+  YYSYMBOL_noun = 168,                     /* noun  */
+  YYSYMBOL_adjective = 169,                /* adjective  */
+  YYSYMBOL_verb = 170,                     /* verb  */
+  YYSYMBOL_adverb = 171,                   /* adverb  */
+  YYSYMBOL_pronoun = 172                   /* pronoun  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -533,7 +797,7 @@ typedef int yytype_uint16;
 
 
 /* Stored state numbers (used for stacks). */
-typedef yytype_int8 yy_state_t;
+typedef yytype_uint8 yy_state_t;
 
 /* State numbers in computations.  */
 typedef int yy_state_fast_t;
@@ -742,21 +1006,21 @@ union yyalloc
 #endif /* !YYCOPY_NEEDED */
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  65
+#define YYFINAL  166
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   191
+#define YYLAST   643
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  66
+#define YYNTOKENS  153
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  17
+#define YYNNTS  20
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  87
+#define YYNRULES  181
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  95
+#define YYNSTATES  186
 
 /* YYMAXUTOK -- Last valid token kind.  */
-#define YYMAXUTOK   319
+#define YYMAXUTOK   406
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -768,13 +1032,13 @@ union yyalloc
 
 /* YYTRANSLATE[TOKEN-NUM] -- Symbol number corresponding to TOKEN-NUM
    as returned by yylex.  */
-static const yytype_int8 yytranslate[] =
+static const yytype_uint8 yytranslate[] =
 {
        0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,    65,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,   152,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -801,22 +1065,41 @@ static const yytype_int8 yytranslate[] =
       25,    26,    27,    28,    29,    30,    31,    32,    33,    34,
       35,    36,    37,    38,    39,    40,    41,    42,    43,    44,
       45,    46,    47,    48,    49,    50,    51,    52,    53,    54,
-      55,    56,    57,    58,    59,    60,    61,    62,    63,    64
+      55,    56,    57,    58,    59,    60,    61,    62,    63,    64,
+      65,    66,    67,    68,    69,    70,    71,    72,    73,    74,
+      75,    76,    77,    78,    79,    80,    81,    82,    83,    84,
+      85,    86,    87,    88,    89,    90,    91,    92,    93,    94,
+      95,    96,    97,    98,    99,   100,   101,   102,   103,   104,
+     105,   106,   107,   108,   109,   110,   111,   112,   113,   114,
+     115,   116,   117,   118,   119,   120,   121,   122,   123,   124,
+     125,   126,   127,   128,   129,   130,   131,   132,   133,   134,
+     135,   136,   137,   138,   139,   140,   141,   142,   143,   144,
+     145,   146,   147,   148,   149,   150,   151
 };
 
 #if YYDEBUG
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
-static const yytype_uint8 yyrline[] =
+static const yytype_int16 yyrline[] =
 {
-       0,    91,    91,    95,    96,   100,   112,   113,   121,   122,
-     123,   124,   125,   126,   127,   128,   129,   130,   131,   132,
-     139,   140,   141,   142,   148,   149,   153,   160,   166,   172,
-     179,   182,   183,   184,   185,   186,   187,   188,   189,   190,
-     191,   192,   193,   194,   195,   196,   197,   198,   199,   203,
-     204,   205,   206,   207,   208,   209,   210,   211,   212,   213,
-     214,   215,   216,   217,   218,   219,   220,   221,   222,   226,
-     227,   228,   229,   230,   231,   232,   233,   234,   235,   239,
-     240,   241,   242,   243,   244,   245,   246,   247
+       0,    93,    93,    97,    98,   102,   114,   115,   116,   124,
+     125,   126,   127,   128,   129,   130,   131,   132,   133,   134,
+     135,   136,   137,   138,   145,   146,   147,   148,   154,   155,
+     159,   160,   164,   171,   177,   183,   189,   196,   199,   200,
+     201,   202,   203,   204,   205,   206,   207,   208,   209,   210,
+     211,   212,   213,   214,   215,   216,   217,   218,   219,   220,
+     221,   222,   223,   224,   225,   226,   227,   228,   229,   230,
+     231,   232,   233,   234,   235,   240,   241,   242,   243,   244,
+     245,   246,   247,   248,   249,   250,   251,   252,   253,   254,
+     255,   256,   257,   258,   259,   260,   261,   262,   263,   264,
+     265,   266,   267,   268,   269,   270,   271,   272,   273,   274,
+     275,   276,   277,   278,   279,   280,   281,   282,   283,   284,
+     285,   291,   292,   293,   294,   295,   296,   297,   298,   299,
+     300,   301,   302,   303,   304,   305,   306,   307,   308,   309,
+     310,   311,   312,   313,   314,   315,   316,   317,   322,   323,
+     324,   325,   326,   327,   328,   329,   330,   331,   332,   333,
+     334,   335,   336,   337,   338,   339,   340,   341,   342,   343,
+     347,   348,   349,   350,   351,   352,   353,   354,   355,   356,
+     357,   358
 };
 #endif
 
@@ -835,15 +1118,28 @@ static const char *const yytname[] =
   "\"end of file\"", "error", "\"invalid token\"", "NEW_LINE",
   "UNKNOWN_WORD", "NUMBER", "BIRD", "DOG", "CAT", "TREE", "HOUSE", "CAR",
   "BOOK", "COMPUTER", "PHONE", "FOOD", "WATER", "SUN", "MOON", "STAR",
-  "FLOWER", "BIRTHDAY", "LUCK", "CHRISTMAS", "LITTLE", "BIG", "FEW",
-  "BEAUTIFUL", "UGLY", "NICE", "HAPPY", "SAD", "ANGRY", "FAST", "SLOW",
-  "STRONG", "WEAK", "SMART", "DUMB", "OLD", "YOUNG", "HOT", "COLD", "GOOD",
-  "WALK", "TALK", "DRINK", "EAT", "SLEEP", "RUN", "READ", "WRITE", "PLAY",
-  "SING", "DAILY", "QUICKLY", "SLOWLY", "HAPPILY", "SADLY", "LOUDLY",
-  "QUIETLY", "ALWAYS", "NEVER", "DASH", "EXCLAMATION", "','", "$accept",
-  "poem", "lines", "line", "sentences", "sentence", "counted_noun",
+  "FLOWER", "BIRTHDAY", "LUCK", "CHRISTMAS", "APPLE", "BANANA", "GRAPE",
+  "ORANGE", "PEAR", "STRAWBERRY", "LEMON", "PEACH", "PLUM", "PINEAPPLE",
+  "CHAIR", "TABLE", "DESK", "WINDOW", "DOOR", "CUP", "BOTTLE", "PEN",
+  "PENCIL", "I", "ME", "YOU", "HE", "HIM", "SHE", "HER", "IT", "WE", "US",
+  "THEY", "THEM", "MERRY", "LITTLE", "BIG", "FEW", "BEAUTIFUL", "UGLY",
+  "NICE", "HAPPY", "SAD", "ANGRY", "FAST", "SLOW", "STRONG", "WEAK",
+  "SMART", "DUMB", "OLD", "YOUNG", "HOT", "COLD", "GOOD", "COOL", "FUNNY",
+  "SCARY", "BRAVE", "CLEVER", "LAZY", "BUSY", "QUIET", "LOUD", "DIRTY",
+  "CONFUSED", "SHY", "FRIENDLY", "ALONE", "CREATIVE", "SERIOUS", "EXCITED",
+  "GRATEFUL", "HOPEFUL", "PROUD", "TIRED", "RELAXED", "STRESSED", "CALM",
+  "ENERGETIC", "WALK", "TALK", "DRINK", "EAT", "SLEEP", "RUN", "READ",
+  "WRITE", "PLAY", "SING", "DANCE", "JUMP", "SWIM", "COOK", "FLY", "DRIVE",
+  "STUDY", "WORK", "PAINT", "DRAW", "LISTEN", "HELP", "CLEAN", "BUILD",
+  "WATCH", "TEACH", "LEARN", "DAILY", "QUICKLY", "SLOWLY", "HAPPILY",
+  "SADLY", "LOUDLY", "QUIETLY", "ALWAYS", "NEVER", "CAREFULLY", "OFTEN",
+  "RARELY", "SUDDENLY", "ANXIOUSLY", "CONFIDENTLY", "EAGERLY",
+  "GRACEFULLY", "SILLY", "AWKWARDLY", "CURIOUSLY", "PATIENTLY",
+  "NERVOUSLY", "DASH", "EXCLAMATION", "','", "$accept", "poem", "lines",
+  "line", "sentences", "sentence", "counted_noun", "subject",
   "counted_nouns", "adjective_aux", "verb_aux", "adverb_aux",
-  "unknown_word", "number", "noun", "adjective", "verb", "adverb", YY_NULLPTR
+  "pronoun_aux", "unknown_word", "number", "noun", "adjective", "verb",
+  "adverb", "pronoun", YY_NULLPTR
 };
 
 static const char *
@@ -853,12 +1149,12 @@ yysymbol_name (yysymbol_kind_t yysymbol)
 }
 #endif
 
-#define YYPACT_NINF (-5)
+#define YYPACT_NINF (-4)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
 
-#define YYTABLE_NINF (-1)
+#define YYTABLE_NINF (-9)
 
 #define yytable_value_is_error(Yyn) \
   0
@@ -867,142 +1163,279 @@ yysymbol_name (yysymbol_kind_t yysymbol)
    STATE-NUM.  */
 static const yytype_int16 yypact[] =
 {
-      -4,    -5,    -5,    -5,    -5,    -5,    -5,    -5,    -5,    -5,
-      -5,    -5,    -5,    -5,    -5,    -5,    -5,    -5,    -5,    -5,
-      -5,    -5,    -5,    -5,    -5,    -5,    -5,    -5,    -5,    -5,
-      -5,    -5,    -5,    -5,    -5,    -5,    -5,    -5,    -5,    -5,
-      -5,    -5,    -5,    -5,    -5,    -5,    -5,    -5,    -5,    -5,
-      -5,   110,    -5,    -4,   109,    -4,    49,    26,    85,    -5,
-      -5,   137,   111,    -5,    -5,    -5,    -5,    -5,    -5,    85,
-      -5,    -5,    -5,    -5,    -5,    -5,    -5,    -5,    -5,   128,
-     129,   128,    -5,    80,    -5,    -5,    -5,   129,    -5,    -5,
-     129,   128,    -5,    -5,    -5
+     143,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,
+      -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,
+      -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,
+      -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,
+      -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,
+      -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,
+      -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,
+      -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,
+      -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,
+      -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,
+      -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,
+      -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,
+      -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,
+      -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,
+      -4,    -4,    -4,    -4,    -4,    -4,    -4,   563,    -4,    -3,
+     561,   143,   414,   238,    -4,   383,    -4,    -4,    -4,    -4,
+     519,   562,    -4,    -4,    -4,    -4,    -4,    -4,    -4,    -4,
+     482,   493,   494,   493,   337,    -4,    -4,    -4,   494,    -4,
+      -4,   494,   493,    -4,    -4,    -4
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
    Performed when YYTABLE does not specify something else to do.  Zero
    means the default is an error.  */
-static const yytype_int8 yydefact[] =
+static const yytype_uint8 yydefact[] =
 {
-       0,    29,    30,    31,    32,    33,    34,    35,    36,    37,
-      38,    39,    40,    41,    42,    43,    44,    45,    46,    47,
-      48,    49,    50,    51,    52,    53,    54,    55,    56,    57,
-      58,    59,    60,    61,    62,    63,    64,    65,    66,    67,
-      68,    69,    70,    71,    72,    73,    74,    75,    76,    77,
-      78,     0,     2,     4,     0,     7,    25,    18,     0,    17,
-      19,    23,    20,    26,    27,     1,     3,     5,     6,     0,
-      79,    80,    81,    82,    83,    84,    85,    86,    87,     0,
-      15,     0,    28,    16,    21,    22,    24,    11,    14,    13,
-      12,     0,     8,     9,    10
+       8,    36,    37,    38,    39,    40,    41,    42,    43,    44,
+      45,    46,    47,    48,    49,    50,    51,    52,    53,    54,
+      55,    56,    57,    58,    59,    60,    61,    62,    63,    64,
+      65,    66,    67,    68,    69,    70,    71,    72,    73,    74,
+     170,   177,   171,   172,   178,   173,   179,   174,   175,   180,
+     176,   181,    79,    75,    76,    77,    78,    80,    81,    82,
+      83,    84,    85,    86,    87,    88,    89,    90,    91,    92,
+      93,    94,    95,    96,    97,    98,    99,   100,   101,   102,
+     103,   104,   105,   106,   107,   108,   109,   110,   111,   112,
+     113,   114,   115,   116,   117,   118,   119,   120,   121,   122,
+     123,   124,   125,   126,   127,   128,   129,   130,   131,   132,
+     133,   134,   135,   136,   137,   138,   139,   140,   141,   142,
+     143,   144,   145,   146,   147,   148,   149,   150,   151,   152,
+     153,   154,   155,   156,   157,   158,   159,   160,   161,   162,
+     163,   164,   165,   166,   167,   168,   169,     0,     2,     4,
+       0,     7,    31,    19,    28,    21,    18,    22,    29,    20,
+      27,    24,    32,    33,    34,    35,     1,     3,     5,     6,
+       0,     0,    16,     0,    17,    25,    26,    30,    12,    15,
+      14,    13,     0,     9,    10,    11
 };
 
 /* YYPGOTO[NTERM-NUM].  */
-static const yytype_int8 yypgoto[] =
+static const yytype_int16 yypgoto[] =
 {
-      -5,    -5,    64,    -5,    63,    -5,    -5,    51,    62,    32,
-      81,    -5,    59,    61,    -5,    -5,    -5
+      -4,    -4,   419,    -4,   418,    -4,    -4,   415,   401,   420,
+     409,   412,    -4,    -4,   411,   416,    -4,    -4,    -4,    -4
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
-static const yytype_int8 yydefgoto[] =
+static const yytype_uint8 yydefgoto[] =
 {
-       0,    51,    52,    53,    54,    55,    56,    57,    58,    59,
-      81,    60,    61,    62,    63,    64,    82
+       0,   147,   148,   149,   150,   151,   152,   153,   154,   155,
+     156,   157,   158,   159,   160,   161,   162,   163,   164,   165
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
    positive, shift that token.  If negative, reduce the rule whose
    number is the opposite.  If YYTABLE_NINF, syntax error.  */
-static const yytype_int8 yytable[] =
+static const yytype_int16 yytable[] =
 {
-       1,     2,     3,     4,     5,     6,     7,     8,     9,    10,
-      11,    12,    13,    14,    15,    16,    17,    18,    19,    20,
-      21,    22,    23,    24,    25,    26,    27,    28,    29,    30,
-      31,    32,    33,    34,    35,    36,    37,    38,    39,    40,
-      41,    42,    43,    44,    45,    46,    47,    48,    49,    50,
-      21,    22,    23,    24,    25,    26,    27,    28,    29,    30,
-      31,    32,    33,    34,    35,    36,    37,    38,    39,    40,
-      41,    42,    43,    44,    45,    46,    47,    48,    49,    50,
-      70,    71,    72,    73,    74,    75,    76,    77,    78,    80,
-       2,     3,     4,     5,     6,     7,     8,     9,    10,    11,
-      12,    13,    14,    15,    16,    17,    18,    19,    20,    83,
-      65,    87,    67,    89,    69,    90,     2,    66,    68,    79,
-      86,    85,    84,    94,    41,    42,    43,    44,    45,    46,
-      47,    48,    49,    50,    70,    71,    72,    73,    74,    75,
-      76,    77,    78,     3,     4,     5,     6,     7,     8,     9,
+      -8,     1,     2,     3,     4,     5,     6,     7,     8,     9,
       10,    11,    12,    13,    14,    15,    16,    17,    18,    19,
-      20,    88,     0,     0,    91,     0,     0,     0,    92,     0,
-       0,    93,    41,    42,    43,    44,    45,    46,    47,    48,
-      49,    50,     0,    70,    71,    72,    73,    74,    75,    76,
-      77,    78
-};
-
-static const yytype_int8 yycheck[] =
-{
+      20,    21,    22,    23,    24,    25,    26,    27,    28,    29,
+      30,    31,    32,    33,    34,    35,    36,    37,    38,    39,
+      40,    41,    42,    43,    44,    45,    46,    47,    48,    49,
+      50,    51,    52,    53,    54,    55,    56,    57,    58,    59,
+      60,    61,    62,    63,    64,    65,    66,    67,    68,    69,
+      70,    71,    72,    73,    74,    75,    76,    77,    78,    79,
+      80,    81,    82,    83,    84,    85,    86,    87,    88,    89,
+      90,    91,    92,    93,    94,    95,    96,    97,    98,    99,
+     100,   101,   102,   103,   104,   105,   106,   107,   108,   109,
+     110,   111,   112,   113,   114,   115,   116,   117,   118,   119,
+     120,   121,   122,   123,   124,   125,   126,   127,   128,   129,
+     130,   131,   132,   133,   134,   135,   136,   137,   138,   139,
+     140,   141,   142,   143,   144,   145,   146,     1,     2,     3,
        4,     5,     6,     7,     8,     9,    10,    11,    12,    13,
       14,    15,    16,    17,    18,    19,    20,    21,    22,    23,
       24,    25,    26,    27,    28,    29,    30,    31,    32,    33,
       34,    35,    36,    37,    38,    39,    40,    41,    42,    43,
       44,    45,    46,    47,    48,    49,    50,    51,    52,    53,
+      54,    55,    56,    57,    58,    59,    60,    61,    62,    63,
+      64,    65,    66,    67,    68,    69,    70,    71,    72,    73,
+      74,    75,    76,    77,    78,    79,    80,    81,    82,    83,
+      84,    85,    86,    87,    88,    89,    90,    91,    92,    93,
+      94,    95,    96,    97,    98,    99,   100,   101,   102,   103,
+     104,   105,   106,   107,   108,   109,   110,   111,   112,   113,
+     114,   115,   116,   117,   118,   119,   120,   121,   122,   123,
+     124,   125,   126,   127,   128,   129,   130,   131,   132,   133,
+     134,   135,   136,   137,   138,   139,   140,   141,   142,   143,
+     144,   145,   146,    52,    53,    54,    55,    56,    57,    58,
+      59,    60,    61,    62,    63,    64,    65,    66,    67,    68,
+      69,    70,    71,    72,    73,    74,    75,    76,    77,    78,
+      79,    80,    81,    82,    83,    84,    85,    86,    87,    88,
+      89,    90,    91,    92,    93,    94,    95,    96,    97,    98,
+      99,   100,   101,   102,   103,   104,   105,   106,   107,   108,
+     109,   110,   111,   112,   113,   114,   115,   116,   117,   118,
+     119,   120,   121,   122,   123,   124,   125,   126,   127,   128,
+     129,   130,   131,   132,   133,   134,   135,   136,   137,   138,
+     139,   140,   141,   142,   143,   144,   145,   146,     2,     3,
+       4,     5,     6,     7,     8,     9,    10,    11,    12,    13,
+      14,    15,    16,    17,    18,    19,    20,    21,    22,    23,
       24,    25,    26,    27,    28,    29,    30,    31,    32,    33,
       34,    35,    36,    37,    38,    39,    40,    41,    42,    43,
-      44,    45,    46,    47,    48,    49,    50,    51,    52,    53,
-      54,    55,    56,    57,    58,    59,    60,    61,    62,    57,
+      44,    45,    46,    47,    48,    49,    50,    51,    98,    99,
+     100,   101,   102,   103,   104,   105,   106,   107,   108,   109,
+     110,   111,   112,   113,   114,   115,   116,   117,   118,   119,
+     120,   121,   122,   123,   124,   125,   126,   127,   128,   129,
+     130,   131,   132,   133,   134,   135,   136,   137,   138,   139,
+     140,   141,   142,   143,   144,   145,   146,     2,     3,     4,
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
-      15,    16,    17,    18,    19,    20,    21,    22,    23,    58,
-       0,    79,     3,    81,    65,    83,     5,    53,    55,    57,
-      69,    62,    61,    91,    44,    45,    46,    47,    48,    49,
-      50,    51,    52,    53,    54,    55,    56,    57,    58,    59,
-      60,    61,    62,     6,     7,     8,     9,    10,    11,    12,
+      15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
+      25,    26,    27,    28,    29,    30,    31,    32,    33,    34,
+      35,    36,    37,    38,    39,     3,     4,     5,     6,     7,
+       8,     9,    10,    11,    12,    13,    14,    15,    16,    17,
+      18,    19,    20,    21,    22,    23,    24,    25,    26,    27,
+      28,    29,    30,    31,    32,    33,    34,    35,    36,    37,
+      38,    39,   172,   166,   168,   173,   170,     2,   167,   169,
+     174,   177,   176,   171,     0,     0,   175,     0,     0,     0,
+     178,     0,   180,   181,   179,     0,   182,     0,     0,     0,
+     183,   185,     0,   184,    98,    99,   100,   101,   102,   103,
+     104,   105,   106,   107,   108,   109,   110,   111,   112,   113,
+     114,   115,   116,   117,   118,   119,   120,   121,   122,   123,
+     124,     0,   125,   126,   127,   128,   129,   130,   131,   132,
+     133,   134,   135,   136,   137,   138,   139,   140,   141,   142,
+     143,   144,   145,   146
+};
+
+static const yytype_int16 yycheck[] =
+{
+       3,     4,     5,     6,     7,     8,     9,    10,    11,    12,
       13,    14,    15,    16,    17,    18,    19,    20,    21,    22,
-      23,    80,    -1,    -1,    83,    -1,    -1,    -1,    87,    -1,
-      -1,    90,    44,    45,    46,    47,    48,    49,    50,    51,
-      52,    53,    -1,    54,    55,    56,    57,    58,    59,    60,
-      61,    62
+      23,    24,    25,    26,    27,    28,    29,    30,    31,    32,
+      33,    34,    35,    36,    37,    38,    39,    40,    41,    42,
+      43,    44,    45,    46,    47,    48,    49,    50,    51,    52,
+      53,    54,    55,    56,    57,    58,    59,    60,    61,    62,
+      63,    64,    65,    66,    67,    68,    69,    70,    71,    72,
+      73,    74,    75,    76,    77,    78,    79,    80,    81,    82,
+      83,    84,    85,    86,    87,    88,    89,    90,    91,    92,
+      93,    94,    95,    96,    97,    98,    99,   100,   101,   102,
+     103,   104,   105,   106,   107,   108,   109,   110,   111,   112,
+     113,   114,   115,   116,   117,   118,   119,   120,   121,   122,
+     123,   124,   125,   126,   127,   128,   129,   130,   131,   132,
+     133,   134,   135,   136,   137,   138,   139,   140,   141,   142,
+     143,   144,   145,   146,   147,   148,   149,     4,     5,     6,
+       7,     8,     9,    10,    11,    12,    13,    14,    15,    16,
+      17,    18,    19,    20,    21,    22,    23,    24,    25,    26,
+      27,    28,    29,    30,    31,    32,    33,    34,    35,    36,
+      37,    38,    39,    40,    41,    42,    43,    44,    45,    46,
+      47,    48,    49,    50,    51,    52,    53,    54,    55,    56,
+      57,    58,    59,    60,    61,    62,    63,    64,    65,    66,
+      67,    68,    69,    70,    71,    72,    73,    74,    75,    76,
+      77,    78,    79,    80,    81,    82,    83,    84,    85,    86,
+      87,    88,    89,    90,    91,    92,    93,    94,    95,    96,
+      97,    98,    99,   100,   101,   102,   103,   104,   105,   106,
+     107,   108,   109,   110,   111,   112,   113,   114,   115,   116,
+     117,   118,   119,   120,   121,   122,   123,   124,   125,   126,
+     127,   128,   129,   130,   131,   132,   133,   134,   135,   136,
+     137,   138,   139,   140,   141,   142,   143,   144,   145,   146,
+     147,   148,   149,    55,    56,    57,    58,    59,    60,    61,
+      62,    63,    64,    65,    66,    67,    68,    69,    70,    71,
+      72,    73,    74,    75,    76,    77,    78,    79,    80,    81,
+      82,    83,    84,    85,    86,    87,    88,    89,    90,    91,
+      92,    93,    94,    95,    96,    97,    98,    99,   100,   101,
+     102,   103,   104,   105,   106,   107,   108,   109,   110,   111,
+     112,   113,   114,   115,   116,   117,   118,   119,   120,   121,
+     122,   123,   124,   125,   126,   127,   128,   129,   130,   131,
+     132,   133,   134,   135,   136,   137,   138,   139,   140,   141,
+     142,   143,   144,   145,   146,   147,   148,   149,     5,     6,
+       7,     8,     9,    10,    11,    12,    13,    14,    15,    16,
+      17,    18,    19,    20,    21,    22,    23,    24,    25,    26,
+      27,    28,    29,    30,    31,    32,    33,    34,    35,    36,
+      37,    38,    39,    40,    41,    42,    43,    44,    45,    46,
+      47,    48,    49,    50,    51,    52,    53,    54,   101,   102,
+     103,   104,   105,   106,   107,   108,   109,   110,   111,   112,
+     113,   114,   115,   116,   117,   118,   119,   120,   121,   122,
+     123,   124,   125,   126,   127,   128,   129,   130,   131,   132,
+     133,   134,   135,   136,   137,   138,   139,   140,   141,   142,
+     143,   144,   145,   146,   147,   148,   149,     5,     6,     7,
+       8,     9,    10,    11,    12,    13,    14,    15,    16,    17,
+      18,    19,    20,    21,    22,    23,    24,    25,    26,    27,
+      28,    29,    30,    31,    32,    33,    34,    35,    36,    37,
+      38,    39,    40,    41,    42,     6,     7,     8,     9,    10,
+      11,    12,    13,    14,    15,    16,    17,    18,    19,    20,
+      21,    22,    23,    24,    25,    26,    27,    28,    29,    30,
+      31,    32,    33,    34,    35,    36,    37,    38,    39,    40,
+      41,    42,   153,     0,     3,   153,   152,     5,   149,   151,
+     155,   170,   161,   153,    -1,    -1,   160,    -1,    -1,    -1,
+     171,    -1,   173,   174,   172,    -1,   174,    -1,    -1,    -1,
+     178,   182,    -1,   181,   101,   102,   103,   104,   105,   106,
+     107,   108,   109,   110,   111,   112,   113,   114,   115,   116,
+     117,   118,   119,   120,   121,   122,   123,   124,   125,   126,
+     127,    -1,   128,   129,   130,   131,   132,   133,   134,   135,
+     136,   137,   138,   139,   140,   141,   142,   143,   144,   145,
+     146,   147,   148,   149
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
    state STATE-NUM.  */
-static const yytype_int8 yystos[] =
+static const yytype_uint8 yystos[] =
 {
        0,     4,     5,     6,     7,     8,     9,    10,    11,    12,
       13,    14,    15,    16,    17,    18,    19,    20,    21,    22,
       23,    24,    25,    26,    27,    28,    29,    30,    31,    32,
       33,    34,    35,    36,    37,    38,    39,    40,    41,    42,
       43,    44,    45,    46,    47,    48,    49,    50,    51,    52,
-      53,    67,    68,    69,    70,    71,    72,    73,    74,    75,
-      77,    78,    79,    80,    81,     0,    68,     3,    70,    65,
-      54,    55,    56,    57,    58,    59,    60,    61,    62,    74,
-      75,    76,    82,    73,    79,    78,    73,    75,    76,    75,
-      75,    76,    76,    76,    75
+      53,    54,    55,    56,    57,    58,    59,    60,    61,    62,
+      63,    64,    65,    66,    67,    68,    69,    70,    71,    72,
+      73,    74,    75,    76,    77,    78,    79,    80,    81,    82,
+      83,    84,    85,    86,    87,    88,    89,    90,    91,    92,
+      93,    94,    95,    96,    97,    98,    99,   100,   101,   102,
+     103,   104,   105,   106,   107,   108,   109,   110,   111,   112,
+     113,   114,   115,   116,   117,   118,   119,   120,   121,   122,
+     123,   124,   125,   126,   127,   128,   129,   130,   131,   132,
+     133,   134,   135,   136,   137,   138,   139,   140,   141,   142,
+     143,   144,   145,   146,   147,   148,   149,   154,   155,   156,
+     157,   158,   159,   160,   161,   162,   163,   164,   165,   166,
+     167,   168,   169,   170,   171,   172,     0,   155,     3,   157,
+     152,   162,   163,   164,   160,   168,   167,   161,   163,   164,
+     163,   163,   164,   164,   164,   163
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
-static const yytype_int8 yyr1[] =
+static const yytype_uint8 yyr1[] =
 {
-       0,    66,    67,    68,    68,    69,    70,    70,    71,    71,
-      71,    71,    71,    71,    71,    71,    71,    71,    71,    71,
-      72,    72,    72,    72,    73,    73,    74,    75,    76,    77,
-      78,    79,    79,    79,    79,    79,    79,    79,    79,    79,
-      79,    79,    79,    79,    79,    79,    79,    79,    79,    80,
-      80,    80,    80,    80,    80,    80,    80,    80,    80,    80,
-      80,    80,    80,    80,    80,    80,    80,    80,    80,    81,
-      81,    81,    81,    81,    81,    81,    81,    81,    81,    82,
-      82,    82,    82,    82,    82,    82,    82,    82
+       0,   153,   154,   155,   155,   156,   157,   157,   157,   158,
+     158,   158,   158,   158,   158,   158,   158,   158,   158,   158,
+     158,   158,   158,   158,   159,   159,   159,   159,   160,   160,
+     161,   161,   162,   163,   164,   165,   166,   167,   168,   168,
+     168,   168,   168,   168,   168,   168,   168,   168,   168,   168,
+     168,   168,   168,   168,   168,   168,   168,   168,   168,   168,
+     168,   168,   168,   168,   168,   168,   168,   168,   168,   168,
+     168,   168,   168,   168,   168,   169,   169,   169,   169,   169,
+     169,   169,   169,   169,   169,   169,   169,   169,   169,   169,
+     169,   169,   169,   169,   169,   169,   169,   169,   169,   169,
+     169,   169,   169,   169,   169,   169,   169,   169,   169,   169,
+     169,   169,   169,   169,   169,   169,   169,   169,   169,   169,
+     169,   170,   170,   170,   170,   170,   170,   170,   170,   170,
+     170,   170,   170,   170,   170,   170,   170,   170,   170,   170,
+     170,   170,   170,   170,   170,   170,   170,   170,   171,   171,
+     171,   171,   171,   171,   171,   171,   171,   171,   171,   171,
+     171,   171,   171,   171,   171,   171,   171,   171,   171,   171,
+     172,   172,   172,   172,   172,   172,   172,   172,   172,   172,
+     172,   172
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr2[] =
 {
-       0,     2,     1,     2,     1,     2,     2,     1,     4,     4,
-       4,     3,     3,     3,     3,     2,     2,     1,     1,     1,
-       1,     2,     2,     1,     3,     1,     1,     1,     1,     1,
+       0,     2,     1,     2,     1,     2,     2,     1,     0,     4,
+       4,     4,     3,     3,     3,     3,     2,     2,     1,     1,
+       1,     1,     1,     0,     1,     2,     2,     1,     1,     1,
+       3,     1,     1,     1,     1,     1,     1,     1,     1,     1,
        1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
        1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
        1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
        1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
        1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
-       1,     1,     1,     1,     1,     1,     1,     1
+       1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
+       1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
+       1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
+       1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
+       1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
+       1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
+       1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
+       1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
+       1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
+       1,     1
 };
 
 
@@ -1466,7 +1899,7 @@ yyreduce:
   switch (yyn)
     {
   case 5: /* line: sentences NEW_LINE  */
-#line 100 "emoji.y"
+#line 102 "emoji.y"
                        {
         //printf("\n--------this is the end of line, catched: %s \n", buffer);
         replace_expressions_in_buffer();
@@ -1474,420 +1907,949 @@ yyreduce:
         printf("%s\n",buffer);
         buffer[0] = '\0';
     }
-#line 1478 "y.tab.c"
+#line 1911 "y.tab.c"
     break;
 
-  case 20: /* counted_noun: noun  */
-#line 139 "emoji.y"
+  case 24: /* counted_noun: noun  */
+#line 145 "emoji.y"
          {print_emoji((yyvsp[0].str), 1);}
-#line 1484 "y.tab.c"
+#line 1917 "y.tab.c"
     break;
 
-  case 21: /* counted_noun: number noun  */
-#line 140 "emoji.y"
-                  { print_emoji((yyvsp[0].str), (yyvsp[-1].num));}
-#line 1490 "y.tab.c"
+  case 25: /* counted_noun: number noun  */
+#line 146 "emoji.y"
+                  { print_emoji((yyvsp[0].str), (yyvsp[-1].num)); }
+#line 1923 "y.tab.c"
     break;
 
-  case 22: /* counted_noun: noun number  */
-#line 141 "emoji.y"
-                  { print_emoji((yyvsp[-1].str), (yyvsp[0].num));}
-#line 1496 "y.tab.c"
+  case 26: /* counted_noun: noun number  */
+#line 147 "emoji.y"
+                  { print_emoji((yyvsp[-1].str), (yyvsp[0].num)); }
+#line 1929 "y.tab.c"
     break;
 
-  case 23: /* counted_noun: number  */
-#line 142 "emoji.y"
+  case 27: /* counted_noun: number  */
+#line 148 "emoji.y"
              {
-        printf("%d ", (yyvsp[0].num)); 
         save_buffer((yyvsp[0].num));}
-#line 1504 "y.tab.c"
+#line 1936 "y.tab.c"
     break;
 
-  case 26: /* adjective_aux: adjective  */
-#line 153 "emoji.y"
+  case 32: /* adjective_aux: adjective  */
+#line 164 "emoji.y"
               {
         //printf("%s ",$1);
         save_buffer((yyvsp[0].str));
      }
-#line 1513 "y.tab.c"
+#line 1945 "y.tab.c"
     break;
 
-  case 27: /* verb_aux: verb  */
-#line 160 "emoji.y"
+  case 33: /* verb_aux: verb  */
+#line 171 "emoji.y"
          {
         //printf("%s ",$1); 
         save_buffer((yyvsp[0].str));}
-#line 1521 "y.tab.c"
+#line 1953 "y.tab.c"
     break;
 
-  case 28: /* adverb_aux: adverb  */
-#line 166 "emoji.y"
+  case 34: /* adverb_aux: adverb  */
+#line 177 "emoji.y"
            {
         //printf("%s ",$1); 
         save_buffer((yyvsp[0].str));}
-#line 1529 "y.tab.c"
+#line 1961 "y.tab.c"
     break;
 
-  case 29: /* unknown_word: UNKNOWN_WORD  */
-#line 172 "emoji.y"
+  case 35: /* pronoun_aux: pronoun  */
+#line 183 "emoji.y"
+            {
+        //printf("%s ",$1); 
+        save_buffer((yyvsp[0].str));}
+#line 1969 "y.tab.c"
+    break;
+
+  case 36: /* unknown_word: UNKNOWN_WORD  */
+#line 189 "emoji.y"
                     {
         //$$ = $1; printf("####### %s\n", $$); 
         (yyval.str) = replace_unknown_word_with_emojis((yyvsp[0].str));
         save_buffer((yyval.str));
         }
-#line 1539 "y.tab.c"
+#line 1979 "y.tab.c"
     break;
 
-  case 30: /* number: NUMBER  */
-#line 179 "emoji.y"
-                 { (yyval.num) = (yyvsp[0].num); }
-#line 1545 "y.tab.c"
-    break;
-
-  case 31: /* noun: BIRD  */
-#line 182 "emoji.y"
-                 { (yyval.str) = "🐦";}
-#line 1551 "y.tab.c"
-    break;
-
-  case 32: /* noun: DOG  */
-#line 183 "emoji.y"
-                 { (yyval.str) = "🐶"; }
-#line 1557 "y.tab.c"
-    break;
-
-  case 33: /* noun: CAT  */
-#line 184 "emoji.y"
-                 { (yyval.str) = "🐱"; }
-#line 1563 "y.tab.c"
-    break;
-
-  case 34: /* noun: TREE  */
-#line 185 "emoji.y"
-                 { (yyval.str) = "🌳"; }
-#line 1569 "y.tab.c"
-    break;
-
-  case 35: /* noun: HOUSE  */
-#line 186 "emoji.y"
-                 { (yyval.str) = "🏠"; }
-#line 1575 "y.tab.c"
-    break;
-
-  case 36: /* noun: CAR  */
-#line 187 "emoji.y"
-                 { (yyval.str) = "🚗"; }
-#line 1581 "y.tab.c"
-    break;
-
-  case 37: /* noun: BOOK  */
-#line 188 "emoji.y"
-                 { (yyval.str) = "📖"; }
-#line 1587 "y.tab.c"
-    break;
-
-  case 38: /* noun: COMPUTER  */
-#line 189 "emoji.y"
-                 { (yyval.str) = "💻"; }
-#line 1593 "y.tab.c"
-    break;
-
-  case 39: /* noun: PHONE  */
-#line 190 "emoji.y"
-                 { (yyval.str) = "📱"; }
-#line 1599 "y.tab.c"
-    break;
-
-  case 40: /* noun: FOOD  */
-#line 191 "emoji.y"
-                 { (yyval.str) = "🍲"; }
-#line 1605 "y.tab.c"
-    break;
-
-  case 41: /* noun: WATER  */
-#line 192 "emoji.y"
-                 { (yyval.str) = "💧"; }
-#line 1611 "y.tab.c"
-    break;
-
-  case 42: /* noun: SUN  */
-#line 193 "emoji.y"
-                 { (yyval.str) = "☀️"; }
-#line 1617 "y.tab.c"
-    break;
-
-  case 43: /* noun: MOON  */
-#line 194 "emoji.y"
-                 { (yyval.str) = "🌜"; }
-#line 1623 "y.tab.c"
-    break;
-
-  case 44: /* noun: STAR  */
-#line 195 "emoji.y"
-                 { (yyval.str) = "⭐"; }
-#line 1629 "y.tab.c"
-    break;
-
-  case 45: /* noun: FLOWER  */
+  case 37: /* number: NUMBER  */
 #line 196 "emoji.y"
-                 { (yyval.str) = "🌸"; }
-#line 1635 "y.tab.c"
+                 { (yyval.num) = (yyvsp[0].num); }
+#line 1985 "y.tab.c"
     break;
 
-  case 46: /* noun: BIRTHDAY  */
-#line 197 "emoji.y"
-                 { (yyval.str) = "🎂"; }
-#line 1641 "y.tab.c"
-    break;
-
-  case 47: /* noun: LUCK  */
-#line 198 "emoji.y"
-                 { (yyval.str) = "🍀";}
-#line 1647 "y.tab.c"
-    break;
-
-  case 48: /* noun: CHRISTMAS  */
+  case 38: /* noun: BIRD  */
 #line 199 "emoji.y"
-                 { (yyval.str) = "🎅🏻";}
-#line 1653 "y.tab.c"
+                 { (yyval.str) = "🐦";}
+#line 1991 "y.tab.c"
     break;
 
-  case 49: /* adjective: LITTLE  */
+  case 39: /* noun: DOG  */
+#line 200 "emoji.y"
+                 { (yyval.str) = "🐶"; }
+#line 1997 "y.tab.c"
+    break;
+
+  case 40: /* noun: CAT  */
+#line 201 "emoji.y"
+                 { (yyval.str) = "🐱"; }
+#line 2003 "y.tab.c"
+    break;
+
+  case 41: /* noun: TREE  */
+#line 202 "emoji.y"
+                 { (yyval.str) = "🌳"; }
+#line 2009 "y.tab.c"
+    break;
+
+  case 42: /* noun: HOUSE  */
 #line 203 "emoji.y"
-                 { (yyval.str) = "🤏"; }
-#line 1659 "y.tab.c"
+                 { (yyval.str) = "🏠"; }
+#line 2015 "y.tab.c"
     break;
 
-  case 50: /* adjective: BIG  */
+  case 43: /* noun: CAR  */
 #line 204 "emoji.y"
-                 { (yyval.str) = "💪"; }
-#line 1665 "y.tab.c"
+                 { (yyval.str) = "🚗"; }
+#line 2021 "y.tab.c"
     break;
 
-  case 51: /* adjective: FEW  */
+  case 44: /* noun: BOOK  */
 #line 205 "emoji.y"
-                 { (yyval.str) = "✌️"; }
-#line 1671 "y.tab.c"
+                 { (yyval.str) = "📖"; }
+#line 2027 "y.tab.c"
     break;
 
-  case 52: /* adjective: BEAUTIFUL  */
+  case 45: /* noun: COMPUTER  */
 #line 206 "emoji.y"
-                 { (yyval.str) = "🌸"; }
-#line 1677 "y.tab.c"
+                 { (yyval.str) = "💻"; }
+#line 2033 "y.tab.c"
     break;
 
-  case 53: /* adjective: UGLY  */
+  case 46: /* noun: PHONE  */
 #line 207 "emoji.y"
-                 { (yyval.str) = "👹"; }
-#line 1683 "y.tab.c"
+                 { (yyval.str) = "📱"; }
+#line 2039 "y.tab.c"
     break;
 
-  case 54: /* adjective: NICE  */
+  case 47: /* noun: FOOD  */
 #line 208 "emoji.y"
-                 { (yyval.str) = "😊"; }
-#line 1689 "y.tab.c"
+                 { (yyval.str) = "🍲"; }
+#line 2045 "y.tab.c"
     break;
 
-  case 55: /* adjective: HAPPY  */
+  case 48: /* noun: WATER  */
 #line 209 "emoji.y"
-                 { (yyval.str) = "😃"; }
-#line 1695 "y.tab.c"
+                 { (yyval.str) = "💧"; }
+#line 2051 "y.tab.c"
     break;
 
-  case 56: /* adjective: SAD  */
+  case 49: /* noun: SUN  */
 #line 210 "emoji.y"
-                 { (yyval.str) = "😢"; }
-#line 1701 "y.tab.c"
+                 { (yyval.str) = "☀️"; }
+#line 2057 "y.tab.c"
     break;
 
-  case 57: /* adjective: ANGRY  */
+  case 50: /* noun: MOON  */
 #line 211 "emoji.y"
-                 { (yyval.str) = "😠"; }
-#line 1707 "y.tab.c"
+                 { (yyval.str) = "🌜"; }
+#line 2063 "y.tab.c"
     break;
 
-  case 58: /* adjective: FAST  */
+  case 51: /* noun: STAR  */
 #line 212 "emoji.y"
-                 { (yyval.str) = "🏃‍♂️"; }
-#line 1713 "y.tab.c"
+                 { (yyval.str) = "⭐"; }
+#line 2069 "y.tab.c"
     break;
 
-  case 59: /* adjective: SLOW  */
+  case 52: /* noun: FLOWER  */
 #line 213 "emoji.y"
-                 { (yyval.str) = "🐌"; }
-#line 1719 "y.tab.c"
+                 { (yyval.str) = "🌸"; }
+#line 2075 "y.tab.c"
     break;
 
-  case 60: /* adjective: STRONG  */
+  case 53: /* noun: BIRTHDAY  */
 #line 214 "emoji.y"
-                 { (yyval.str) = "💪"; }
-#line 1725 "y.tab.c"
+                 { (yyval.str) = "🎂"; }
+#line 2081 "y.tab.c"
     break;
 
-  case 61: /* adjective: WEAK  */
+  case 54: /* noun: LUCK  */
 #line 215 "emoji.y"
-                 { (yyval.str) = "🦠"; }
-#line 1731 "y.tab.c"
+                 { (yyval.str) = "🍀";}
+#line 2087 "y.tab.c"
     break;
 
-  case 62: /* adjective: SMART  */
+  case 55: /* noun: CHRISTMAS  */
 #line 216 "emoji.y"
-                 { (yyval.str) = "🧠"; }
-#line 1737 "y.tab.c"
+                 { (yyval.str) = "🎅🏻";}
+#line 2093 "y.tab.c"
     break;
 
-  case 63: /* adjective: DUMB  */
+  case 56: /* noun: APPLE  */
 #line 217 "emoji.y"
-                 { (yyval.str) = "🤪"; }
-#line 1743 "y.tab.c"
+                 { (yyval.str) = "🍎";}
+#line 2099 "y.tab.c"
     break;
 
-  case 64: /* adjective: OLD  */
+  case 57: /* noun: BANANA  */
 #line 218 "emoji.y"
-                 { (yyval.str) = "👴"; }
-#line 1749 "y.tab.c"
+                 { (yyval.str) = "🍌";}
+#line 2105 "y.tab.c"
     break;
 
-  case 65: /* adjective: YOUNG  */
+  case 58: /* noun: GRAPE  */
 #line 219 "emoji.y"
-                 { (yyval.str) = "👶"; }
-#line 1755 "y.tab.c"
+                 { (yyval.str) = "🍇";}
+#line 2111 "y.tab.c"
     break;
 
-  case 66: /* adjective: HOT  */
+  case 59: /* noun: ORANGE  */
 #line 220 "emoji.y"
-                 { (yyval.str) = "🔥"; }
-#line 1761 "y.tab.c"
+                 { (yyval.str) = "🍊";}
+#line 2117 "y.tab.c"
     break;
 
-  case 67: /* adjective: COLD  */
+  case 60: /* noun: PEAR  */
 #line 221 "emoji.y"
-                 { (yyval.str) = "❄️"; }
-#line 1767 "y.tab.c"
+                 { (yyval.str) = "🍐";}
+#line 2123 "y.tab.c"
     break;
 
-  case 68: /* adjective: GOOD  */
+  case 61: /* noun: STRAWBERRY  */
 #line 222 "emoji.y"
-                 { (yyval.str) = "👍"; }
-#line 1773 "y.tab.c"
+                 { (yyval.str) = "🍓";}
+#line 2129 "y.tab.c"
     break;
 
-  case 69: /* verb: WALK  */
+  case 62: /* noun: LEMON  */
+#line 223 "emoji.y"
+                 { (yyval.str) = "🍋";}
+#line 2135 "y.tab.c"
+    break;
+
+  case 63: /* noun: PEACH  */
+#line 224 "emoji.y"
+                 { (yyval.str) = "🍑";}
+#line 2141 "y.tab.c"
+    break;
+
+  case 64: /* noun: PLUM  */
+#line 225 "emoji.y"
+                 { (yyval.str) = "🍑";}
+#line 2147 "y.tab.c"
+    break;
+
+  case 65: /* noun: PINEAPPLE  */
 #line 226 "emoji.y"
-              { (yyval.str) = "🚶"; }
-#line 1779 "y.tab.c"
+                 { (yyval.str) = "🍍";}
+#line 2153 "y.tab.c"
     break;
 
-  case 70: /* verb: TALK  */
+  case 66: /* noun: CHAIR  */
 #line 227 "emoji.y"
-                { (yyval.str) = "🗣️"; }
-#line 1785 "y.tab.c"
+                 { (yyval.str) = "🪑";}
+#line 2159 "y.tab.c"
     break;
 
-  case 71: /* verb: DRINK  */
+  case 67: /* noun: TABLE  */
 #line 228 "emoji.y"
-                { (yyval.str) = "🥤"; }
-#line 1791 "y.tab.c"
+                 { (yyval.str) = "🪑";}
+#line 2165 "y.tab.c"
     break;
 
-  case 72: /* verb: EAT  */
+  case 68: /* noun: DESK  */
 #line 229 "emoji.y"
-                { (yyval.str) = "🍽️"; }
-#line 1797 "y.tab.c"
+                 { (yyval.str) = "🪑";}
+#line 2171 "y.tab.c"
     break;
 
-  case 73: /* verb: SLEEP  */
+  case 69: /* noun: WINDOW  */
 #line 230 "emoji.y"
-                { (yyval.str) = "😴"; }
-#line 1803 "y.tab.c"
+                 { (yyval.str) = "🪟";}
+#line 2177 "y.tab.c"
     break;
 
-  case 74: /* verb: RUN  */
+  case 70: /* noun: DOOR  */
 #line 231 "emoji.y"
-                { (yyval.str) = "🏃"; }
-#line 1809 "y.tab.c"
+                 { (yyval.str) = "🚪";}
+#line 2183 "y.tab.c"
     break;
 
-  case 75: /* verb: READ  */
+  case 71: /* noun: CUP  */
 #line 232 "emoji.y"
-                { (yyval.str) = "📖"; }
-#line 1815 "y.tab.c"
+                 { (yyval.str) = "☕";}
+#line 2189 "y.tab.c"
     break;
 
-  case 76: /* verb: WRITE  */
+  case 72: /* noun: BOTTLE  */
 #line 233 "emoji.y"
-                { (yyval.str) = "✍️"; }
-#line 1821 "y.tab.c"
+                 { (yyval.str) = "🍾";}
+#line 2195 "y.tab.c"
     break;
 
-  case 77: /* verb: PLAY  */
+  case 73: /* noun: PEN  */
 #line 234 "emoji.y"
-                { (yyval.str) = "🎮"; }
-#line 1827 "y.tab.c"
+                 { (yyval.str) = "✒️";}
+#line 2201 "y.tab.c"
     break;
 
-  case 78: /* verb: SING  */
+  case 74: /* noun: PENCIL  */
 #line 235 "emoji.y"
-                { (yyval.str) = "🎤"; }
-#line 1833 "y.tab.c"
+                 { (yyval.str) = "✏️";}
+#line 2207 "y.tab.c"
     break;
 
-  case 79: /* adverb: DAILY  */
-#line 239 "emoji.y"
-               { (yyval.str) = "📅"; }
-#line 1839 "y.tab.c"
-    break;
-
-  case 80: /* adverb: QUICKLY  */
+  case 75: /* adjective: LITTLE  */
 #line 240 "emoji.y"
-                { (yyval.str) = "🏃‍♂️"; }
-#line 1845 "y.tab.c"
+                 { (yyval.str) = "🤏"; }
+#line 2213 "y.tab.c"
     break;
 
-  case 81: /* adverb: SLOWLY  */
+  case 76: /* adjective: BIG  */
 #line 241 "emoji.y"
-                { (yyval.str) = "🐢"; }
-#line 1851 "y.tab.c"
+                 { (yyval.str) = "💪"; }
+#line 2219 "y.tab.c"
     break;
 
-  case 82: /* adverb: HAPPILY  */
+  case 77: /* adjective: FEW  */
 #line 242 "emoji.y"
-                { (yyval.str) = "😊"; }
-#line 1857 "y.tab.c"
+                 { (yyval.str) = "✌️"; }
+#line 2225 "y.tab.c"
     break;
 
-  case 83: /* adverb: SADLY  */
+  case 78: /* adjective: BEAUTIFUL  */
 #line 243 "emoji.y"
-                { (yyval.str) = "😢"; }
-#line 1863 "y.tab.c"
+                 { (yyval.str) = "🌸"; }
+#line 2231 "y.tab.c"
     break;
 
-  case 84: /* adverb: LOUDLY  */
+  case 79: /* adjective: MERRY  */
 #line 244 "emoji.y"
-                { (yyval.str) = "🔊"; }
-#line 1869 "y.tab.c"
+                 { (yyval.str) = "😇"; }
+#line 2237 "y.tab.c"
     break;
 
-  case 85: /* adverb: QUIETLY  */
+  case 80: /* adjective: UGLY  */
 #line 245 "emoji.y"
-                { (yyval.str) = "🤫"; }
-#line 1875 "y.tab.c"
+                 { (yyval.str) = "👹"; }
+#line 2243 "y.tab.c"
     break;
 
-  case 86: /* adverb: ALWAYS  */
+  case 81: /* adjective: NICE  */
 #line 246 "emoji.y"
-                { (yyval.str) = "♾️"; }
-#line 1881 "y.tab.c"
+                 { (yyval.str) = "😊"; }
+#line 2249 "y.tab.c"
     break;
 
-  case 87: /* adverb: NEVER  */
+  case 82: /* adjective: HAPPY  */
 #line 247 "emoji.y"
-                { (yyval.str) = "🚫"; }
-#line 1887 "y.tab.c"
+                 { (yyval.str) = "😃"; }
+#line 2255 "y.tab.c"
+    break;
+
+  case 83: /* adjective: SAD  */
+#line 248 "emoji.y"
+                 { (yyval.str) = "😢"; }
+#line 2261 "y.tab.c"
+    break;
+
+  case 84: /* adjective: ANGRY  */
+#line 249 "emoji.y"
+                 { (yyval.str) = "😠"; }
+#line 2267 "y.tab.c"
+    break;
+
+  case 85: /* adjective: FAST  */
+#line 250 "emoji.y"
+                 { (yyval.str) = "🏃‍♂️"; }
+#line 2273 "y.tab.c"
+    break;
+
+  case 86: /* adjective: SLOW  */
+#line 251 "emoji.y"
+                 { (yyval.str) = "🐌"; }
+#line 2279 "y.tab.c"
+    break;
+
+  case 87: /* adjective: STRONG  */
+#line 252 "emoji.y"
+                 { (yyval.str) = "💪"; }
+#line 2285 "y.tab.c"
+    break;
+
+  case 88: /* adjective: WEAK  */
+#line 253 "emoji.y"
+                 { (yyval.str) = "🦠"; }
+#line 2291 "y.tab.c"
+    break;
+
+  case 89: /* adjective: SMART  */
+#line 254 "emoji.y"
+                 { (yyval.str) = "🧠"; }
+#line 2297 "y.tab.c"
+    break;
+
+  case 90: /* adjective: DUMB  */
+#line 255 "emoji.y"
+                 { (yyval.str) = "🤪"; }
+#line 2303 "y.tab.c"
+    break;
+
+  case 91: /* adjective: OLD  */
+#line 256 "emoji.y"
+                 { (yyval.str) = "👴"; }
+#line 2309 "y.tab.c"
+    break;
+
+  case 92: /* adjective: YOUNG  */
+#line 257 "emoji.y"
+                 { (yyval.str) = "👶"; }
+#line 2315 "y.tab.c"
+    break;
+
+  case 93: /* adjective: HOT  */
+#line 258 "emoji.y"
+                 { (yyval.str) = "🔥"; }
+#line 2321 "y.tab.c"
+    break;
+
+  case 94: /* adjective: COLD  */
+#line 259 "emoji.y"
+                 { (yyval.str) = "❄️"; }
+#line 2327 "y.tab.c"
+    break;
+
+  case 95: /* adjective: GOOD  */
+#line 260 "emoji.y"
+                 { (yyval.str) = "👍"; }
+#line 2333 "y.tab.c"
+    break;
+
+  case 96: /* adjective: COOL  */
+#line 261 "emoji.y"
+                 { (yyval.str) = "😎"; }
+#line 2339 "y.tab.c"
+    break;
+
+  case 97: /* adjective: FUNNY  */
+#line 262 "emoji.y"
+                 { (yyval.str) = "😆"; }
+#line 2345 "y.tab.c"
+    break;
+
+  case 98: /* adjective: SCARY  */
+#line 263 "emoji.y"
+                 { (yyval.str) = "😱"; }
+#line 2351 "y.tab.c"
+    break;
+
+  case 99: /* adjective: BRAVE  */
+#line 264 "emoji.y"
+                 { (yyval.str) = "🦸‍"; }
+#line 2357 "y.tab.c"
+    break;
+
+  case 100: /* adjective: CLEVER  */
+#line 265 "emoji.y"
+                 { (yyval.str) = "🤓"; }
+#line 2363 "y.tab.c"
+    break;
+
+  case 101: /* adjective: LAZY  */
+#line 266 "emoji.y"
+                 { (yyval.str) = "😴"; }
+#line 2369 "y.tab.c"
+    break;
+
+  case 102: /* adjective: BUSY  */
+#line 267 "emoji.y"
+                 { (yyval.str) = "💼"; }
+#line 2375 "y.tab.c"
+    break;
+
+  case 103: /* adjective: QUIET  */
+#line 268 "emoji.y"
+                 { (yyval.str) = "🤫"; }
+#line 2381 "y.tab.c"
+    break;
+
+  case 104: /* adjective: LOUD  */
+#line 269 "emoji.y"
+                 { (yyval.str) = "🔊"; }
+#line 2387 "y.tab.c"
+    break;
+
+  case 105: /* adjective: DIRTY  */
+#line 270 "emoji.y"
+                 { (yyval.str) = "🧻"; }
+#line 2393 "y.tab.c"
+    break;
+
+  case 106: /* adjective: CONFUSED  */
+#line 271 "emoji.y"
+                 { (yyval.str) = "😕"; }
+#line 2399 "y.tab.c"
+    break;
+
+  case 107: /* adjective: SHY  */
+#line 272 "emoji.y"
+                 { (yyval.str) = "🙈"; }
+#line 2405 "y.tab.c"
+    break;
+
+  case 108: /* adjective: FRIENDLY  */
+#line 273 "emoji.y"
+                 { (yyval.str) = "👋"; }
+#line 2411 "y.tab.c"
+    break;
+
+  case 109: /* adjective: ALONE  */
+#line 274 "emoji.y"
+                 { (yyval.str) = "🚶‍♂️"; }
+#line 2417 "y.tab.c"
+    break;
+
+  case 110: /* adjective: CREATIVE  */
+#line 275 "emoji.y"
+                 { (yyval.str) = "🎨"; }
+#line 2423 "y.tab.c"
+    break;
+
+  case 111: /* adjective: SERIOUS  */
+#line 276 "emoji.y"
+                 { (yyval.str) = "😐"; }
+#line 2429 "y.tab.c"
+    break;
+
+  case 112: /* adjective: EXCITED  */
+#line 277 "emoji.y"
+                 { (yyval.str) = "😁"; }
+#line 2435 "y.tab.c"
+    break;
+
+  case 113: /* adjective: GRATEFUL  */
+#line 278 "emoji.y"
+                 { (yyval.str) = "🙏"; }
+#line 2441 "y.tab.c"
+    break;
+
+  case 114: /* adjective: HOPEFUL  */
+#line 279 "emoji.y"
+                 { (yyval.str) = "🤞"; }
+#line 2447 "y.tab.c"
+    break;
+
+  case 115: /* adjective: PROUD  */
+#line 280 "emoji.y"
+                 { (yyval.str) = "🏆"; }
+#line 2453 "y.tab.c"
+    break;
+
+  case 116: /* adjective: TIRED  */
+#line 281 "emoji.y"
+                 { (yyval.str) = "😴"; }
+#line 2459 "y.tab.c"
+    break;
+
+  case 117: /* adjective: RELAXED  */
+#line 282 "emoji.y"
+                 { (yyval.str) = "😌"; }
+#line 2465 "y.tab.c"
+    break;
+
+  case 118: /* adjective: STRESSED  */
+#line 283 "emoji.y"
+                 { (yyval.str) = "😩"; }
+#line 2471 "y.tab.c"
+    break;
+
+  case 119: /* adjective: CALM  */
+#line 284 "emoji.y"
+                 { (yyval.str) = "😌"; }
+#line 2477 "y.tab.c"
+    break;
+
+  case 120: /* adjective: ENERGETIC  */
+#line 285 "emoji.y"
+                 { (yyval.str) = "💥"; }
+#line 2483 "y.tab.c"
+    break;
+
+  case 121: /* verb: WALK  */
+#line 291 "emoji.y"
+              { (yyval.str) = "🚶"; }
+#line 2489 "y.tab.c"
+    break;
+
+  case 122: /* verb: TALK  */
+#line 292 "emoji.y"
+                { (yyval.str) = "🗣️"; }
+#line 2495 "y.tab.c"
+    break;
+
+  case 123: /* verb: DRINK  */
+#line 293 "emoji.y"
+                { (yyval.str) = "🥤"; }
+#line 2501 "y.tab.c"
+    break;
+
+  case 124: /* verb: EAT  */
+#line 294 "emoji.y"
+                { (yyval.str) = "🍽️"; }
+#line 2507 "y.tab.c"
+    break;
+
+  case 125: /* verb: SLEEP  */
+#line 295 "emoji.y"
+                { (yyval.str) = "😴"; }
+#line 2513 "y.tab.c"
+    break;
+
+  case 126: /* verb: RUN  */
+#line 296 "emoji.y"
+                { (yyval.str) = "🏃"; }
+#line 2519 "y.tab.c"
+    break;
+
+  case 127: /* verb: READ  */
+#line 297 "emoji.y"
+                { (yyval.str) = "📖"; }
+#line 2525 "y.tab.c"
+    break;
+
+  case 128: /* verb: WRITE  */
+#line 298 "emoji.y"
+                { (yyval.str) = "✍️"; }
+#line 2531 "y.tab.c"
+    break;
+
+  case 129: /* verb: PLAY  */
+#line 299 "emoji.y"
+                { (yyval.str) = "🎮"; }
+#line 2537 "y.tab.c"
+    break;
+
+  case 130: /* verb: SING  */
+#line 300 "emoji.y"
+                { (yyval.str) = "🎤"; }
+#line 2543 "y.tab.c"
+    break;
+
+  case 131: /* verb: DANCE  */
+#line 301 "emoji.y"
+                { (yyval.str) = "💃"; }
+#line 2549 "y.tab.c"
+    break;
+
+  case 132: /* verb: JUMP  */
+#line 302 "emoji.y"
+                { (yyval.str) = "🤸"; }
+#line 2555 "y.tab.c"
+    break;
+
+  case 133: /* verb: SWIM  */
+#line 303 "emoji.y"
+                { (yyval.str) = "🏊"; }
+#line 2561 "y.tab.c"
+    break;
+
+  case 134: /* verb: COOK  */
+#line 304 "emoji.y"
+                { (yyval.str) = "👩‍🍳"; }
+#line 2567 "y.tab.c"
+    break;
+
+  case 135: /* verb: FLY  */
+#line 305 "emoji.y"
+                { (yyval.str) = "✈️"; }
+#line 2573 "y.tab.c"
+    break;
+
+  case 136: /* verb: DRIVE  */
+#line 306 "emoji.y"
+                { (yyval.str) = "🚗"; }
+#line 2579 "y.tab.c"
+    break;
+
+  case 137: /* verb: STUDY  */
+#line 307 "emoji.y"
+                { (yyval.str) = "📚"; }
+#line 2585 "y.tab.c"
+    break;
+
+  case 138: /* verb: WORK  */
+#line 308 "emoji.y"
+                { (yyval.str) = "💼"; }
+#line 2591 "y.tab.c"
+    break;
+
+  case 139: /* verb: PAINT  */
+#line 309 "emoji.y"
+                { (yyval.str) = "🎨"; }
+#line 2597 "y.tab.c"
+    break;
+
+  case 140: /* verb: DRAW  */
+#line 310 "emoji.y"
+                { (yyval.str) = "✏️"; }
+#line 2603 "y.tab.c"
+    break;
+
+  case 141: /* verb: LISTEN  */
+#line 311 "emoji.y"
+                { (yyval.str) = "👂"; }
+#line 2609 "y.tab.c"
+    break;
+
+  case 142: /* verb: HELP  */
+#line 312 "emoji.y"
+                { (yyval.str) = "🤝"; }
+#line 2615 "y.tab.c"
+    break;
+
+  case 143: /* verb: CLEAN  */
+#line 313 "emoji.y"
+                { (yyval.str) = "🧹"; }
+#line 2621 "y.tab.c"
+    break;
+
+  case 144: /* verb: BUILD  */
+#line 314 "emoji.y"
+                { (yyval.str) = "🔨"; }
+#line 2627 "y.tab.c"
+    break;
+
+  case 145: /* verb: WATCH  */
+#line 315 "emoji.y"
+                { (yyval.str) = "👀"; }
+#line 2633 "y.tab.c"
+    break;
+
+  case 146: /* verb: TEACH  */
+#line 316 "emoji.y"
+                { (yyval.str) = "👩‍🏫"; }
+#line 2639 "y.tab.c"
+    break;
+
+  case 147: /* verb: LEARN  */
+#line 317 "emoji.y"
+                { (yyval.str) = "📝"; }
+#line 2645 "y.tab.c"
+    break;
+
+  case 148: /* adverb: DAILY  */
+#line 322 "emoji.y"
+                 { (yyval.str) = "📅"; }
+#line 2651 "y.tab.c"
+    break;
+
+  case 149: /* adverb: QUICKLY  */
+#line 323 "emoji.y"
+                  { (yyval.str) = "🏃‍"; }
+#line 2657 "y.tab.c"
+    break;
+
+  case 150: /* adverb: SLOWLY  */
+#line 324 "emoji.y"
+                  { (yyval.str) = "🐢"; }
+#line 2663 "y.tab.c"
+    break;
+
+  case 151: /* adverb: HAPPILY  */
+#line 325 "emoji.y"
+                  { (yyval.str) = "😊"; }
+#line 2669 "y.tab.c"
+    break;
+
+  case 152: /* adverb: SADLY  */
+#line 326 "emoji.y"
+                  { (yyval.str) = "😢"; }
+#line 2675 "y.tab.c"
+    break;
+
+  case 153: /* adverb: LOUDLY  */
+#line 327 "emoji.y"
+                  { (yyval.str) = "🔊"; }
+#line 2681 "y.tab.c"
+    break;
+
+  case 154: /* adverb: QUIETLY  */
+#line 328 "emoji.y"
+                  { (yyval.str) = "🤫"; }
+#line 2687 "y.tab.c"
+    break;
+
+  case 155: /* adverb: ALWAYS  */
+#line 329 "emoji.y"
+                  { (yyval.str) = "♾️"; }
+#line 2693 "y.tab.c"
+    break;
+
+  case 156: /* adverb: NEVER  */
+#line 330 "emoji.y"
+                  { (yyval.str) = "🚫"; }
+#line 2699 "y.tab.c"
+    break;
+
+  case 157: /* adverb: CAREFULLY  */
+#line 331 "emoji.y"
+                  { (yyval.str) = "🔍"; }
+#line 2705 "y.tab.c"
+    break;
+
+  case 158: /* adverb: OFTEN  */
+#line 332 "emoji.y"
+                  { (yyval.str) = "🔁"; }
+#line 2711 "y.tab.c"
+    break;
+
+  case 159: /* adverb: RARELY  */
+#line 333 "emoji.y"
+                  { (yyval.str) = "🔀"; }
+#line 2717 "y.tab.c"
+    break;
+
+  case 160: /* adverb: SUDDENLY  */
+#line 334 "emoji.y"
+                  { (yyval.str) = "🌪️"; }
+#line 2723 "y.tab.c"
+    break;
+
+  case 161: /* adverb: ANXIOUSLY  */
+#line 335 "emoji.y"
+                  { (yyval.str) = "😰"; }
+#line 2729 "y.tab.c"
+    break;
+
+  case 162: /* adverb: CONFIDENTLY  */
+#line 336 "emoji.y"
+                  { (yyval.str) = "😎"; }
+#line 2735 "y.tab.c"
+    break;
+
+  case 163: /* adverb: EAGERLY  */
+#line 337 "emoji.y"
+                  { (yyval.str) = "🤩"; }
+#line 2741 "y.tab.c"
+    break;
+
+  case 164: /* adverb: GRACEFULLY  */
+#line 338 "emoji.y"
+                  { (yyval.str) = "🩰"; }
+#line 2747 "y.tab.c"
+    break;
+
+  case 165: /* adverb: SILLY  */
+#line 339 "emoji.y"
+                  { (yyval.str) = "🤪"; }
+#line 2753 "y.tab.c"
+    break;
+
+  case 166: /* adverb: AWKWARDLY  */
+#line 340 "emoji.y"
+                  { (yyval.str) = "🙃"; }
+#line 2759 "y.tab.c"
+    break;
+
+  case 167: /* adverb: CURIOUSLY  */
+#line 341 "emoji.y"
+                  { (yyval.str) = "🔍"; }
+#line 2765 "y.tab.c"
+    break;
+
+  case 168: /* adverb: PATIENTLY  */
+#line 342 "emoji.y"
+                  { (yyval.str) = "⏳"; }
+#line 2771 "y.tab.c"
+    break;
+
+  case 169: /* adverb: NERVOUSLY  */
+#line 343 "emoji.y"
+                  { (yyval.str) = "😬"; }
+#line 2777 "y.tab.c"
+    break;
+
+  case 170: /* pronoun: I  */
+#line 347 "emoji.y"
+              { (yyval.str) = "👤"; }
+#line 2783 "y.tab.c"
+    break;
+
+  case 171: /* pronoun: YOU  */
+#line 348 "emoji.y"
+               { (yyval.str) = "👥"; }
+#line 2789 "y.tab.c"
+    break;
+
+  case 172: /* pronoun: HE  */
+#line 349 "emoji.y"
+               { (yyval.str) = "👦"; }
+#line 2795 "y.tab.c"
+    break;
+
+  case 173: /* pronoun: SHE  */
+#line 350 "emoji.y"
+               { (yyval.str) = "👧"; }
+#line 2801 "y.tab.c"
+    break;
+
+  case 174: /* pronoun: IT  */
+#line 351 "emoji.y"
+               { (yyval.str) = "👶"; }
+#line 2807 "y.tab.c"
+    break;
+
+  case 175: /* pronoun: WE  */
+#line 352 "emoji.y"
+               { (yyval.str) = "👫"; }
+#line 2813 "y.tab.c"
+    break;
+
+  case 176: /* pronoun: THEY  */
+#line 353 "emoji.y"
+               { (yyval.str) = "👬"; }
+#line 2819 "y.tab.c"
+    break;
+
+  case 177: /* pronoun: ME  */
+#line 354 "emoji.y"
+               { (yyval.str) = "👤"; }
+#line 2825 "y.tab.c"
+    break;
+
+  case 178: /* pronoun: HIM  */
+#line 355 "emoji.y"
+               { (yyval.str) = "👦"; }
+#line 2831 "y.tab.c"
+    break;
+
+  case 179: /* pronoun: HER  */
+#line 356 "emoji.y"
+               { (yyval.str) = "👧"; }
+#line 2837 "y.tab.c"
+    break;
+
+  case 180: /* pronoun: US  */
+#line 357 "emoji.y"
+               { (yyval.str) = "👫"; }
+#line 2843 "y.tab.c"
+    break;
+
+  case 181: /* pronoun: THEM  */
+#line 358 "emoji.y"
+               { (yyval.str) = "👬"; }
+#line 2849 "y.tab.c"
     break;
 
 
-#line 1891 "y.tab.c"
+#line 2853 "y.tab.c"
 
       default: break;
     }
@@ -2080,13 +3042,12 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 250 "emoji.y"
+#line 362 "emoji.y"
 
 
 #include "lex.yy.c"
 
 int main() {
-    printf("before or after????\n");
     strcpy(buffer, "");
     return yyparse();
 }
@@ -2132,7 +3093,7 @@ void replace_expressions_in_buffer() {
                 expression = strtok(NULL, " "); 
                 continue; 
             }
-        } else if (strcmp(expression, "merry") == 0) {
+        } else if (strcmp(expression, "😇") == 0) {
             char *next_token = strtok(NULL, " "); 
             if (next_token != NULL && strcmp(next_token, "🎅🏻") == 0) {
                 strcat(new_buffer, "🎄 "); 
@@ -2175,15 +3136,13 @@ char *replace_unknown_word_with_emojis(char *word) {
     for (int i = 0; i < sizeof(lexical_fields) / sizeof(lexical_fields[0]); i++) {
 
         for (int j = 0; j <lexical_fields[i].num_keywords; j++) {
-           //printf("----> %s %d\n",lexical_fields[i].keywords[j], strcmp(word, lexical_fields[i].keywords[j]));
            
            if (strcmp(word, lexical_fields[i].keywords[j]) == 0) {
-                // If a match is found, append the first three emojis associated with the lexical field to emojis
                 strcat(emojis, "(");
                 strcat(emojis, lexical_fields[i].emojis[0]);
-                strcat(emojis, " "); // Add a space after each emoji
+                strcat(emojis, " "); 
                 strcat(emojis, lexical_fields[i].emojis[1]);
-                strcat(emojis, " "); // Add a space after each emoji
+                strcat(emojis, " "); 
                 strcat(emojis, lexical_fields[i].emojis[2]);
                 strcat(emojis, ") ");
 
@@ -2192,6 +3151,5 @@ char *replace_unknown_word_with_emojis(char *word) {
             }
         }
     }
-    // If no match is found, return the initial word
     return word;
 }
